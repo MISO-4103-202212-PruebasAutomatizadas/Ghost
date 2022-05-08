@@ -33,6 +33,15 @@
 | 19              |                                                           |        |              |  
 | 20              |                                                           |        |              |  
 
+### Patrones
+- ** Kraken **
+	- `Given-When-Then`: archivos `features/*.feature`
+	- `Page Objects`: 
+		- se definen en `features/web/pages_objects/clases.page.js`
+		- se usan en `features/step_definitions/step.js`
+- ** Segunda **
+	- `Given-When-Then`:
+	- `Page Objects`: 
 
 ### Aplicación bajo pruebas 
 

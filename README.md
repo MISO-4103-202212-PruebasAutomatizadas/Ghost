@@ -23,11 +23,11 @@
 | Page            | Despublicar un Page                                       |   si   |  Playwright  |  
 | Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |  
 | 11              |                                                           |        |              |  
-| 12              | Añadir miembro                                            |        |              |  
-| 13              | modificar miembro                                         |        |              |  
-| 14              | modificar perfil                                          |        |              |  
-| 15              | invitar personas staff                                    |        |              |  
-| 16              | reenviar invitacion staff                                 |        |              |  
+| 12              | Añadir miembro                                            |   si   |  Playwright  |  
+| 13              | modificar miembro                                         |   si   |  Playwright  |  
+| 14              | modificar perfil                                          |   si   |  Playwright  |  
+| 15              | invitar personas staff                                    |   si   |  Playwright  |  
+| 16              | reenviar invitacion staff                                 |   si   |  Playwright  |  
 | 17              |                                                           |        |              |  
 | 18              |                                                           |        |              |  
 | 19              |                                                           |        |              |  

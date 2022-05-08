@@ -95,6 +95,8 @@
 	- POSTDESC: descripción de post de prueba 
 	- MINUTESADDPUBLISHPOST: minutos a futuro para programar la publicación de un post 
 	- TAGTEST1: tag de prueba 
+	- <PAGETITLE> : titulo page de prueba
+	- <PAGEBODY> : Conetido de page de prueba
 2. page_objects: en caso que ghost local tenga una url diferente a `http://localhost:2368`, se debe actualizar en los siguientes page_objects
 	- dashboard.page.js
 	- login.page.js

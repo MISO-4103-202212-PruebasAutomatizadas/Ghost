@@ -36,11 +36,11 @@
 
 ### Aplicación bajo pruebas 
 
-#### Ghost
+#### Ghost versión 4.46.0
 
 1. Pre-requisitos:
-	- versión actualizada de node
-	- versión actualizada de npm
+	- versión de node: V16.15.0
+	- versión de npm: 8.5.5
 2. Instalar Ghost-cli
 	- abrir terminal
 	- crear carpeta ghost-cli e ingresar
@@ -69,6 +69,10 @@
 `git pull origin`
 
 #### Kraken
+
+** versiones **
+- versión de node: V16.15.0
+- versión de npm: 8.5.5
 
 ** configuraciones **
 `cd .\krakenGhost`

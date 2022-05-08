@@ -34,12 +34,12 @@
 | 20              |                                                           |        |              |  
 
 ### Patrones
-- ** Kraken **
+- **Kraken**
 	- `Given-When-Then`: archivos `features/*.feature`
 	- `Page Objects`: 
 		- se definen en `features/web/pages_objects/clases.page.js`
 		- se usan en `features/step_definitions/step.js`
-- ** Segunda **
+- **Segunda**
 	- `Given-When-Then`:
 	- `Page Objects`: 
 
@@ -72,18 +72,18 @@
 
 ### Pruebas E2E
 
-** Clonar repositorio **
+**Clonar repositorio**
 `git clone https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost.git miso-automatizadas-equipo46`
 `cd .\miso-automatizadas-equipo46`
 `git pull origin`
 
 #### Kraken
 
-** versiones **
+**versiones**
 - versión de node: V16.15.0
 - versión de npm: 8.5.5
 
-** configuraciones **
+**configuraciones**
 `cd .\krakenGhost`
 `npm install`
 `code .`
@@ -104,7 +104,7 @@
 	- tag_edit.page.js
 	- tags.page.js
 
-** ejecución de pruebas **
+**ejecución de pruebas**
 1. Pre-requisitos
 	- Iniciar ghost 
 2. Ejecutar en terminal externa o de vscode
@@ -134,7 +134,7 @@
 
 ### Pros y contra
 
-** Kraken **
+**Kraken**
 - PROS
   - La funcionalidad signaling es muy útil para simular escenarios sincronizados con más de un usuario
   - El formato del reporte es muy útil, intuitivo y usable
@@ -149,6 +149,6 @@
   - Los `Step` no soportan `expect`de manera nativa. Conceptualmente frente al manejo de `Given-When-Then` es mucho más claro el manejo de expect o asserts, que indiquen explíctamente el cumplimiento de la prueba
   - No se observó soporte nativo para las `Page objects`
 
-** Segunda herramienta **
+**Segunda herramienta**
 - PROS 
 - CONTRA

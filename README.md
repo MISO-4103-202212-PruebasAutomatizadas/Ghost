@@ -5,8 +5,8 @@
 ### Integrantes
 
 - Ronald Lugo <r.lugoq@uniandes.edu.co>
-- 
-- 
+- Juan Sebastian Ballesteros <j.ballesterosm@uniandes.edu.co>
+- Rafael Brache <r.brache@uniandes.edu.co>
 - 
 
 ### Funcionalidades y escenarios probados
@@ -17,10 +17,10 @@
 | Post            | Despublicar un post de manera exitosa                     |   si   |  Playwright  | 
 | Post+Tag        | Asignar tag a Post y publicar actualización               |   si   |  Playwright  | 
 | Post            | Eliminar Post satisfactoriamente                          |   si   |  Playwright  | 
-| 6               |                                                           |        |              | 
-| 7               |                                                           |        |              |  
-| 8               |                                                           |        |              |  
-| 9               |                                                           |        |              |  
+| Page            | Creación y publicación de Page                            |   si   |              | 
+| Page            | Modificar Page                                            |   si   |              |  
+| Page            | Eliminar Page                                             |   si   |              |  
+| Page            | Despublicar un Page                                       |   si   |              |  
 | 10              |                                                           |        |              |  
 | 11              |                                                           |        |              |  
 | 12              |                                                           |        |              |  
@@ -94,6 +94,8 @@
 	- POSTDESC: descripción de post de prueba 
 	- MINUTESADDPUBLISHPOST: minutos a futuro para programar la publicación de un post 
 	- TAGTEST1: tag de prueba 
+	- <PAGETITLE> : titulo page de prueba
+	- <PAGEBODY> : Conetido de page de prueba
 2. page_objects: en caso que ghost local tenga una url diferente a `http://localhost:2368`, se debe actualizar en los siguientes page_objects
 	- dashboard.page.js
 	- login.page.js
@@ -164,6 +166,8 @@
   - Los `Step` no soportan `expect`de manera nativa. Conceptualmente frente al manejo de `Given-When-Then` es mucho más claro el manejo de expect o asserts, que indiquen explíctamente el cumplimiento de la prueba
   - No se observó soporte nativo para las `Page objects`
 	- El consumo y carga de recursos de la máquina al momento de ejecutar las pruebas, afecta significativamente el resultado de las pruebas, generando falsos positivos en el sentido que arroja errores porque no encuentra un elemento, pero en realidad si lo carga, solo que tardó más del timeout
+  - El setup de las pruebas es muy manual
+  - Se necesitan instalaciones que posiblemente no se utilicen
 
 **Playwright**
 - PROS 

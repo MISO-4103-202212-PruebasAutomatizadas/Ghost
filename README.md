@@ -5,22 +5,22 @@
 ### Integrantes
 
 - Ronald Lugo <r.lugoq@uniandes.edu.co>
+- Juan Sebastian Ballesteros <j.ballesterosm@uniandes.edu.co>
+- Rafael Brache <r.brache@uniandes.edu.co>
 - Edinson Morales <e.moralesm2@uniandes.edu.co>
-- 
-- 
 
 ### Funcionalidades y escenarios probados
 | Funcionalidades | Escenarios                                                | Kraken | Segunda herr |
 |-----------------|-----------------------------------------------------------|--------|--------------|  
-| Post            | Creación y publicación inmediata de Post exitosa          |   si   |              | 
-| Post            | Creación y publicación programada de Post exitosa         |   si   |              | 
-| Post            | Despublicar un post de manera exitosa                     |   si   |              | 
-| Post            | Asignar tag a Post y publicar actualización               |   si   |              | 
-| Post            | Eliminar Post satisfactoriamente                          |   si   |              | 
-| 6               |                                                           |        |              | 
-| 7               |                                                           |        |              |  
-| 8               |                                                           |        |              |  
-| 9               |                                                           |        |              |  
+| Post            | Creación y publicación inmediata de Post exitosa          |   si   |  Playwright  | 
+| Post            | Creación y publicación programada de Post exitosa         |   si   |  Playwright  | 
+| Post            | Despublicar un post de manera exitosa                     |   si   |  Playwright  | 
+| Post+Tag        | Asignar tag a Post y publicar actualización               |   si   |  Playwright  | 
+| Post            | Eliminar Post satisfactoriamente                          |   si   |  Playwright  | 
+| Page            | Creación y publicación de Page                            |   si   |              | 
+| Page            | Modificar Page                                            |   si   |              |  
+| Page            | Eliminar Page                                             |   si   |              |  
+| Page            | Despublicar un Page                                       |   si   |              |  
 | 10              |                                                           |        |              |  
 | 11              |                                                           |        |              |  
 | 12              |                                                           |        |              |  
@@ -35,13 +35,13 @@
 
 ### Patrones
 - **Kraken**
-	- `Given-When-Then`: archivos `features/*.feature`
-	- `Page Objects`: 
+	- **Given-When-Then**: archivos `features/*.feature`
+	- **Page Objects**: 
 		- se definen en `features/web/pages_objects/clases.page.js`
 		- se usan en `features/step_definitions/step.js`
-- **Segunda**
-	- `Given-When-Then`:
-	- `Page Objects`: 
+- **Playwright**
+	- **Given-When-Then**: `index.js`
+	- **Page Objects**: `page_objects/`
 
 ### Aplicación bajo pruebas 
 
@@ -53,30 +53,29 @@
 2. Instalar Ghost-cli
 	- abrir terminal
 	- crear carpeta ghost-cli e ingresar
-	`mkdir ghost-cli`
-	`cd ghost-cli`
-	- instalar ghost-cli 
-	`npm install ghost-cli@latest`
-	`cd ..`
-	`mkdir ghost `
-	`cd ghost` 
-	`..\ghost-cli\node_modules\.bin\ghost install 4.46.0 --local`
+		- `mkdir ghost-cli`
+		- `cd ghost-cli`
+	- instalar ghost-cli
+		- `npm install ghost-cli@latest`
+		- `cd ..`
+		- `mkdir ghost `
+		- `cd ghost` 
+		- `..\ghost-cli\node_modules\.bin\ghost install 4.46.0 --local`
 	- en paso anterior, si no se ejecuta el comando cambiar el backslash por slash normal, es decir cambiar \ por /
-	- configuración de ghost. Confirmar url en pantalla. (el usuario y password que se configure se usarán más adelante)
-	http://localhost:2368/ghost/#/setup 
+	- configuración de ghost. Confirmar url en pantalla. (el usuario y password que se configure se usarán más adelante) http://localhost:2368/ghost/#/setup 
 	- listar ghosts instalados 
-	`..\ghost-cli\node_modules\.bin\ghost ls`
+		- `..\ghost-cli\node_modules\.bin\ghost ls`
 	- detener ghost 
-	`..\ghost-cli\node_modules\.bin\ghost stop`
+		- `..\ghost-cli\node_modules\.bin\ghost stop`
 	- iniciar ghost 
-	`..\ghost-cli\node_modules\.bin\ghost start`
+		- `..\ghost-cli\node_modules\.bin\ghost start`
 
 ### Pruebas E2E
 
 **Clonar repositorio**
-`git clone https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost.git miso-automatizadas-equipo46`
-`cd .\miso-automatizadas-equipo46`
-`git pull origin`
+- `git clone https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost.git miso-automatizadas-equipo46`
+- `cd .\miso-automatizadas-equipo46`
+- `git pull origin`
 
 #### Kraken
 
@@ -85,9 +84,8 @@
 - versión de npm: 8.5.5
 
 **configuraciones**
-`cd .\krakenGhost`
-`npm install`
-`code .`
+- `cd .\krakenGhost`
+- `npm install`
 
 1. properties.json: es necesario actualizar ADMIN1 y PASSWORD1
 	- ADMIN1: usuario de ghost local 
@@ -96,6 +94,8 @@
 	- POSTDESC: descripción de post de prueba 
 	- MINUTESADDPUBLISHPOST: minutos a futuro para programar la publicación de un post 
 	- TAGTEST1: tag de prueba 
+	- <PAGETITLE> : titulo page de prueba
+	- <PAGEBODY> : Conetido de page de prueba
 2. page_objects: en caso que ghost local tenga una url diferente a `http://localhost:2368`, se debe actualizar en los siguientes page_objects
 	- dashboard.page.js
 	- login.page.js
@@ -134,6 +134,22 @@
 		- Workaround: Ingresar a base de datos de Ghost `ghost\content\data\ghost-local` con un visor de sqlite / editar tabla **brute** / cambiar el valor del campo count de 100 a 1. Confirmar los cambios
 
 #### Playwrite
+** versiones **
+- versión de node: V16.15.0
+- versión de npm: 8.5.5
+
+** configuraciones **
+- `cd .\playwrightGhost`
+- `npm install playwright`
+- `code .`
+
+1. index.js: es necesario actualizar userAdmin y adminPass
+	- userAdmin: usuario de ghost local 
+	- adminPass: password de ghost local 
+	- postTitle: titulo post de prueba 
+	- postDesc: descripción de post de prueba 
+	- minutesAddPublishPost: minutos a futuro para programar la publicación de un post 
+	- tag: tag de prueba 
 
 ### Pros y contra
 
@@ -151,7 +167,18 @@
   - La implementación de escenarios paralelos que se hablan entre si, genera un trade-off respecto al principio del patrón `Given-When-Then` que sugiere que cada escenario debe ser independiente, es decir, no debe depender de la ejecución de otro escenario
   - Los `Step` no soportan `expect`de manera nativa. Conceptualmente frente al manejo de `Given-When-Then` es mucho más claro el manejo de expect o asserts, que indiquen explíctamente el cumplimiento de la prueba
   - No se observó soporte nativo para las `Page objects`
+	- El consumo y carga de recursos de la máquina al momento de ejecutar las pruebas, afecta significativamente el resultado de las pruebas, generando falsos positivos en el sentido que arroja errores porque no encuentra un elemento, pero en realidad si lo carga, solo que tardó más del timeout
+  - El setup de las pruebas es muy manual
+  - Se necesitan instalaciones que posiblemente no se utilicen
 
-**Segunda herramienta**
+**Playwright**
 - PROS 
+	- Nivel de detalle en la simulación de eventos reales que realizaría un usuario, como en el caso de type, que simula la digitación, más que solo colocar un dato en un campo
+	- La generación de imágenes es bastante consistente y útil
+	- Simulación de keyboard, que permitió agregar funcionalidades como presionar un Tab
+	- El manejo asíncrono de eventos es muy útil para reducir los tiempos muertos y aprovechar al máximo el recurso de máquina disponible
 - CONTRA
+	- Bajo el manejo actual (index.js), no hay un soporte claro al patrón `Given-When-Then`
+	- Al manejar todos los escenarios en el index.js, dificulta la lectura, entendimiento, modificación y ejecución independiente de los mismos
+	- Ausencia per se de reportes útiles para seguimiento o para un stakeholder
+	- Ausencia por default de mensajes en pantalla que indiquen el flujo de las ejecuciones

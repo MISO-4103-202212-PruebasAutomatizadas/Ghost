@@ -6,7 +6,6 @@ const PostEditPage = require('../pages_objects/post_edit.page');
 const TagsPage = require('../pages_objects/tags.page');
 const TagEditPage = require('../pages_objects/tag_edit.page');
 const { postUrlLabel } = require('../pages_objects/post_edit.page');
-const postPage = require('../pages_objects/post.page');
 
 let lastPostUrl;
 

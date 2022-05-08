@@ -17,11 +17,11 @@
 | Post            | Despublicar un post de manera exitosa                     |   si   |  Playwright  | 
 | Post+Tag        | Asignar tag a Post y publicar actualización               |   si   |  Playwright  | 
 | Post            | Eliminar Post satisfactoriamente                          |   si   |  Playwright  | 
-| Page            | Creación y publicación de Page                            |   si   |              | 
-| Page            | Modificar Page                                            |   si   |              |  
-| Page            | Eliminar Page                                             |   si   |              |  
-| Page            | Despublicar un Page                                       |   si   |              |  
-| 10              |                                                           |        |              |  
+| Page            | Creación y publicación de Page                            |   si   |  Playwright  | 
+| Page            | Modificar Page                                            |   si   |  Playwright  |  
+| Page            | Eliminar Page                                             |   si   |  Playwright  |  
+| Page            | Despublicar un Page                                       |   si   |  Playwright  |  
+| Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |  
 | 11              |                                                           |        |              |  
 | 12              |                                                           |        |              |  
 | 13              |                                                           |        |              |  
@@ -175,6 +175,9 @@
 	- La generación de imágenes es bastante consistente y útil
 	- Simulación de keyboard, que permitió agregar funcionalidades como presionar un Tab
 	- El manejo asíncrono de eventos es muy útil para reducir los tiempos muertos y aprovechar al máximo el recurso de máquina disponible
+	- Se pueden ejecutar test en paralelo
+	- El setup de la herramienta es simple
+	- Capacidad de hacer test en diferentes browsers
 - CONTRA
 	- Bajo el manejo actual (index.js), no hay un soporte claro al patrón `Given-When-Then`
 	- Al manejar todos los escenarios en el index.js, dificulta la lectura, entendimiento, modificación y ejecución independiente de los mismos

@@ -1,4 +1,4 @@
 **/node_modules
 **/reports/
 config.production.json
-package-lock
+package-lock.json

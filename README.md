@@ -5,7 +5,7 @@
 ### Integrantes
 
 - Ronald Lugo <r.lugoq@uniandes.edu.co>
-- 
+- Edinson Morales <e.moralesm2@uniandes.edu.co>
 - 
 - 
 
@@ -49,7 +49,7 @@
 
 1. Pre-requisitos:
 	- versión de node: V16.15.0
-	- versión de npm: 8.5.5
+	- versión de npm: 8.5.5	
 2. Instalar Ghost-cli
 	- abrir terminal
 	- crear carpeta ghost-cli e ingresar
@@ -61,6 +61,7 @@
 	`mkdir ghost `
 	`cd ghost` 
 	`..\ghost-cli\node_modules\.bin\ghost install 4.46.0 --local`
+	- en paso anterior, si no se ejecuta el comando cambiar el backslash por slash normal, es decir cambiar \ por /
 	- configuración de ghost. Confirmar url en pantalla. (el usuario y password que se configure se usarán más adelante)
 	http://localhost:2368/ghost/#/setup 
 	- listar ghosts instalados 
@@ -107,6 +108,8 @@
 **ejecución de pruebas**
 1. Pre-requisitos
 	- Iniciar ghost 
+	- Tener instalado el navegador chrome o similar donde se realizará la prueba
+	- Al ejecutarse por primera vez kraken otorgar permisos de privacidad, aceptar terminos en ventana emergente (solo en sistema operativo windows)
 2. Ejecutar en terminal externa o de vscode
 	`node .\node_modules\kraken-node\bin\kraken-node run`
 3. Manejo de excepciones

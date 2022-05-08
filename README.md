@@ -5,7 +5,7 @@
 ### Integrantes
 
 - Ronald Lugo <r.lugoq@uniandes.edu.co>
-- 
+- Juan Sebastian Ballesteros <j.ballesterosm@uniandes.edu.co>
 - 
 - 
 

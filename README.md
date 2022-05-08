@@ -6,7 +6,7 @@
 
 - Ronald Lugo <r.lugoq@uniandes.edu.co>
 - Juan Sebastian Ballesteros <j.ballesterosm@uniandes.edu.co>
-- 
+- Rafael Brache <r.brache@uniandes.edu.co>
 - 
 
 ### Funcionalidades y escenarios probados
@@ -17,10 +17,10 @@
 | Post            | Despublicar un post de manera exitosa                     |   si   |              | 
 | Post            | Asignar tag a Post y publicar actualización               |   si   |              | 
 | Post            | Eliminar Post satisfactoriamente                          |   si   |              | 
-| 6               |                                                           |        |              | 
-| 7               |                                                           |        |              |  
-| 8               |                                                           |        |              |  
-| 9               |                                                           |        |              |  
+| Page            | Creación y publicación de Page                            |   si   |              | 
+| Page            | Modificar Page                                            |   si   |              |  
+| Page            | Eliminar Page                                             |   si   |              |  
+| Page            | Despublicar un Page                                       |   si   |              |  
 | 10              |                                                           |        |              |  
 | 11              |                                                           |        |              |  
 | 12              |                                                           |        |              |  
@@ -148,6 +148,8 @@
   - La implementación de escenarios paralelos que se hablan entre si, genera un trade-off respecto al principio del patrón `Given-When-Then` que sugiere que cada escenario debe ser independiente, es decir, no debe depender de la ejecución de otro escenario
   - Los `Step` no soportan `expect`de manera nativa. Conceptualmente frente al manejo de `Given-When-Then` es mucho más claro el manejo de expect o asserts, que indiquen explíctamente el cumplimiento de la prueba
   - No se observó soporte nativo para las `Page objects`
+  - El setup de las pruebas es muy manual
+  - Se necesitan instalaciones que posiblemente no se utilicen
 
 **Segunda herramienta**
 - PROS 

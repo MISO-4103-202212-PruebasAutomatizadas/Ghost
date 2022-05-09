@@ -25,7 +25,7 @@
 | 11              |                                                           |        |              |  
 | 12              | Añadir miembro                                            |   si   |  Playwright  |  
 | 13              | modificar miembro                                         |   si   |  Playwright  |  
-| 14              | modificar perfil                                          |   si   |  Playwright  |  
+| 14              | eliminar miembro                                          |   si   |  Playwright  |  
 | 15              | invitar personas staff                                    |   si   |  Playwright  |  
 | 16              | reenviar invitacion staff                                 |   si   |  Playwright  |  
 | 17              |                                                           |        |              |  

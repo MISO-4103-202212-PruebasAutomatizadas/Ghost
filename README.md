@@ -22,15 +22,15 @@
 | Page            | Eliminar Page                                             |   si   |  Playwright  |  
 | Page            | Despublicar un Page                                       |   si   |  Playwright  |  
 | Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |  
-| 11              |                                                           |        |              |  
+| Tags            | Creación de un tag exitoso                                |   si   |  No          |  
 | 12              | Añadir miembro                                            |   si   |  Playwright  |  
 | 13              | modificar miembro                                         |   si   |  Playwright  |  
 | 14              | modificar perfil                                          |   si   |  Playwright  |  
 | 15              | invitar personas staff                                    |   si   |  Playwright  |  
 | 16              | reenviar invitacion staff                                 |   si   |  Playwright  |  
-| 17              |                                                           |        |              |  
-| 18              |                                                           |        |              |  
-| 19              |                                                           |        |              |  
+| Tags            | Encontrar de un tag creado                                |   si   |  No          |  
+| Tags            | Actualizacion de un tag exitosa                           |   si   |  No          |  
+| Tags            | Eliminacion de un tag exitoso                             |   si   |  No          |  
 | 20              |                                                           |        |              |  
 
 ### Patrones

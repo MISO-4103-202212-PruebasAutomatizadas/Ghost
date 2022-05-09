@@ -18,7 +18,7 @@
 | Post+Tag        | Asignar tag a Post y publicar actualización               |   si   |  Playwright  | 
 | Post            | Eliminar Post satisfactoriamente                          |   si   |  Playwright  | 
 | Page            | Creación y publicación de Page                            |   si   |  Playwright  | 
-| Page            | Modificar Page                                            |   si   |  Playwright  |  
+| Page            | Creación y publicación programada de Page exitosa         |   si   |  Playwright  |  
 | Page            | Eliminar Page                                             |   si   |  Playwright  |  
 | Page            | Despublicar un Page                                       |   si   |  Playwright  |  
 | Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |  

@@ -2,8 +2,8 @@
 const playwright = require('playwright');
 const LoginPage = require('./pages_objects/login.page');
 const DashboardPage = require('./pages_objects/dashboard.page');
-const PostPage = require('./pages_objects/post.page');
-const PostEditPage = require('./pages_objects/post_edit.page');
+const PagePage = require('./pages_objects/page.page');
+const PageEditPage = require('./pages_objects/page_edit.page');
 const TagsPage = require('./pages_objects/tags.page');
 const TagEditPage = require('./pages_objects/tag_edit.page');
 
@@ -12,14 +12,14 @@ const urlAdmin = url + 'Ghost';
 const pathReports = './reports/'
 const userAdmin = "r.brache@uniandes.edu.co";
 const adminPass = "uniandes21";
-const postTitle = "Nuevo Post";
-const postDesc = "Descripción del nuevo Post";
-const minutesAddPublishPost = 60;
+const pageTitle = "Nuevo Page";
+const pageDesc = "Descripción del nuevo Page";
+const minutesAddPublishPage = 60;
 const tag = "tag-test";
 
 TagsPage.tagTest = tag;
-PostPage.tagTest = tag;
-PostPage.titleTest = postTitle;
+PagePage.tagTest = tag;
+PagePage.titleTest = pageTitle;
 
 //Función flecha asíncrona
 (async () => {
@@ -38,12 +38,12 @@ PostPage.titleTest = postTitle;
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     
     console.log(
-      "Feature 1: Creación, publicación, configuración y borrado de Posts");
+      "Feature 2: Creación, publicación, configuración y borrado de Page");
     console.log(
-      "  Como usuario quiero crear y publicar un post para que esté disponible a los visitantes de Ghost");
+      "  Como usuario quiero crear y publicar un page para que esté disponible a los visitantes de Ghost");
 
     console.log(
-      "Scenario: 1. Creación y publicación inmediata de Post exitosa");
+      "Scenario: 1. Creación y publicación inmediata de Page exitosa");
     console.log(
       "  Given I login on Ghost page with <userAdmin> and <adminPass>");
 
@@ -57,38 +57,38 @@ PostPage.titleTest = postTitle;
     console.log("    Login success");
 
     console.log(
-      "  When I create a Post with <postTitle> and <postDesc>");
-    await page.click(DashboardPage.postsMenu);
-    await page.click(PostPage.newPostButton);
-    await page.type(PostEditPage.titleTextarea, postTitle);
+      "  When I create a Page with <pageTitle> and <pageDesc>");
+    await page.click(DashboardPage.pageMenu);
+    await page.click(PagePage.newPageButton);
+    await page.type(PageEditPage.titleTextarea, pageTitle);
     await page.keyboard.press('Tab');
-    await page.type(PostEditPage.descEditor, postDesc);
+    await page.type(PageEditPage.descEditor, pageDesc);
 
     await page.screenshot({path: pathReports + './1.1-createPost.png'});
-    console.log("    Create post success");
+    console.log("    Create page success");
 
-    console.log("  And I publish a Post");
-    await page.click(PostEditPage.publishMenuButton);
-    await page.click(PostEditPage.publishButton);
-    await page.click(PostEditPage.publishConfirmButton);
+    console.log("  And I publish a Page");
+    await page.click(PageEditPage.publishMenuButton);
+    await page.click(PageEditPage.publishButton);
+    // await page.click(PageEditPage.publishConfirmButton);
 
     await page.screenshot({path: pathReports + './1.1-publishPost.png'});
-    console.log("    Publish post success");
+    console.log("    Publish page success");
 
     console.log("  And I wait for 1 seconds");
     await new Promise(r => setTimeout(r, 1000));
 
-    console.log("  Then I expect a published Post from settings with <postTitle> and <postDesc>");
-    await page.click(PostEditPage.settingsMenuButton);
-    await page.goto(url + await page.inputValue(PostEditPage.postUrlInput));
+    console.log("  Then I expect a published Page from settings with <pageTitle> and <pageDesc>");
+    await page.click(PageEditPage.settingsMenuButton);
+    await page.goto(url + await page.inputValue(PageEditPage.pageUrlInput));
 
-    feedback = await page.$(PostPage.postTitleHeader);
+    feedback = await page.$(PagePage.pageTitleHeader);
     //feedback = await page.$(PostPage.postDescriptionSection);
     await page.screenshot({path: pathReports + './1.1-publishedPost.png'});
-    console.log(`    Published post '${feedback}'`);
+    console.log(`    Published page '${feedback}'`);
 
     console.log(
-      "Scenario: 2. Creación y publicación programada de Post exitosa");
+      "Scenario: 2. Creación y publicación programada de Page exitosa");
     console.log(
       "  Given I login on Ghost page with<userAdmin> and <adminPass>");
     await page.goto(urlAdmin);
@@ -103,32 +103,32 @@ PostPage.titleTest = postTitle;
     console.log("    Login success");
 
     console.log(
-      "  When I create a Post with <postTitle> and <postDesc>");
-    await page.click(DashboardPage.postsMenu);
-    await page.click(PostPage.newPostButton);
-    await page.type(PostEditPage.titleTextarea, postTitle);
-    await page.keyboard.press('Tab');
-    await page.type(PostEditPage.descEditor, postDesc);
+        "  When I create a Page with <pageTitle> and <pageDesc>");
+      await page.click(DashboardPage.pageMenu);
+      await page.click(PagePage.newPageButton);
+      await page.type(PageEditPage.titleTextarea, pageTitle);
+      await page.keyboard.press('Tab');
+      await page.type(PageEditPage.descEditor, pageDesc);
 
     await page.screenshot({path: pathReports + './1.2-createPost.png'});
-    console.log("    Create post success");
+    console.log("    Create page success");
 
     console.log(
-      "  And I schedule a Post to be published in <minutesaddpublishpost> minutes");
+      "  And I schedule a Pageto be published in <minutesAddPublishPage> minutes");
     let date = new Date();
-    date.setTime(date.getTime() + ((minutesAddPublishPost)*60*1000));
+    date.setTime(date.getTime() + ((minutesAddPublishPage)*60*1000));
     let dateString = date.toJSON().slice(0,10);
     let timeString = date.toJSON().slice(11,16);
-    await page.click(PostEditPage.publishMenuButton);
+    await page.click(PageEditPage.publishMenuButton);
     await new Promise(r => setTimeout(r, 1000));
-    await page.click(PostEditPage.schedulePublishRadio);
-    await page.fill(PostEditPage.scheduleDatePublishInput, '');
-    await page.type(PostEditPage.scheduleDatePublishInput, dateString);
+    await page.click(PageEditPage.schedulePublishRadio);
+    await page.fill(PageEditPage.scheduleDatePublishInput, '');
+    await page.type(PageEditPage.scheduleDatePublishInput, dateString);
     await page.keyboard.press('Tab');
-    await page.fill(PostEditPage.scheduleTimePublishInput, '');
-    await page.type(PostEditPage.scheduleTimePublishInput, timeString);
-    await page.click(PostEditPage.publishButton);
-    await page.click(PostEditPage.publishConfirmButton);
+    await page.fill(PageEditPage.scheduleTimePublishInput, '');
+    await page.type(PageEditPage.scheduleTimePublishInput, timeString);
+    await page.click(PageEditPage.publishButton);
+    // await page.click(PageEditPage.publishConfirmButton);
 
     await page.screenshot({path: pathReports + './1.2-scheduledPost.png'});
     console.log("    scheduled publish post success");
@@ -138,16 +138,16 @@ PostPage.titleTest = postTitle;
     await new Promise(r => setTimeout(r, 1000));
 
     console.log(
-      "  Then I expect that Post created from settings is not published yet");
-    await page.click(PostEditPage.settingsMenuButton);
+      "  Then I expect that Page created from settings is not published yet");
+    await page.click(PageEditPage.settingsMenuButton);
     await new Promise(r => setTimeout(r, 1000));
-    await page.goto(url + await page.inputValue(PostEditPage.postUrlInput));
-    feedback = await page.$(PostPage.postCodeErrorSection);
-    console.log(`    Post no publicado satisfactoriamente: code no found '${feedback}'`);
+    await page.goto(url + await page.inputValue(PageEditPage.pageUrlInput));
+    feedback = await page.$(PagePage.pageCodeErrorSection);
+    console.log(`    Page no publicado satisfactoriamente: code no found '${feedback}'`);
     await page.screenshot({path: pathReports + './1.2-postNotPublished.png'});
 
     console.log(
-      "Scenario: 3. Despublicar un post de manera exitosa");
+      "Scenario: 3. Despublicar un page de manera exitosa");
     console.log(
         "  Given I login on Ghost page with<userAdmin> and <adminPass>");
     await page.goto(urlAdmin);
@@ -162,49 +162,49 @@ PostPage.titleTest = postTitle;
     console.log("    Login success");
 
     console.log(
-      "  When I create a Post with <postTitle> and <postDesc>");
-    await page.click(DashboardPage.postsMenu);
-    await page.click(PostPage.newPostButton);
-    await page.type(PostEditPage.titleTextarea, postTitle);
-    await page.keyboard.press('Tab');
-    await page.type(PostEditPage.descEditor, postDesc);
+        "  When I create a Page with <pageTitle> and <pageDesc>");
+      await page.click(DashboardPage.pageMenu);
+      await page.click(PagePage.newPageButton);
+      await page.type(PageEditPage.titleTextarea, pageTitle);
+      await page.keyboard.press('Tab');
+      await page.type(PageEditPage.descEditor, pageDesc);
 
     await page.screenshot({path: pathReports + './1.3-createPost.png'});
     console.log("    Create post success");
     
-    console.log("  And I publish a Post");
-    await page.click(PostEditPage.publishMenuButton);
-    await page.click(PostEditPage.publishButton);
-    await page.click(PostEditPage.publishConfirmButton);
+    console.log("  And I publish a Page");
+    await page.click(PageEditPage.publishMenuButton);
+    await page.click(PageEditPage.publishButton);
+    // await page.click(PageEditPage.publishConfirmButton);
 
     await page.screenshot({path: pathReports + './1.3-publishPost.png'});
-    console.log("    Publish post success");
+    console.log("    Publish page success");
 
     console.log("  And I wait for 1 seconds");
     await new Promise(r => setTimeout(r, 1000));
 
-    console.log("  And I unpublished a Post ");
-    await page.click(PostEditPage.publishMenuButton);
-    await page.click(PostEditPage.unpublishRadio);
-    await page.click(PostEditPage.publishButton);
+    console.log("  And I unpublished a Page ");
+    // await page.click(PageEditPage.publishMenuButton);
+    await page.click(PageEditPage.unpublishRadio);
+    await page.click(PageEditPage.publishButton);
 
     await page.screenshot({path: pathReports + './1.3-unpublishedPost.png'});
-    console.log("    Unpublish post success");
+    console.log("    Unpublish page success");
 
     console.log("  And I wait for 1 seconds");
     await new Promise(r => setTimeout(r, 1000));
 
     console.log(
-      "  Then I expect that Post created from settings is not published yet");
-    await page.click(PostEditPage.settingsMenuButton);
+      "  Then I expect that Page created from settings is not published yet");
+    await page.click(PageEditPage.settingsMenuButton);
     await new Promise(r => setTimeout(r, 1000));
-    await page.goto(url + await page.inputValue(PostEditPage.postUrlInput));
-    feedback = await page.$(PostPage.postCodeErrorSection);
-    console.log(`    Post no publicado satisfactoriamente: code no found '${feedback}'`);
+    await page.goto(url + await page.inputValue(PageEditPage.pageUrlInput));
+    feedback = await page.$(PagePage.pageCodeErrorSection);
+    console.log(`    Page no publicado satisfactoriamente: code no found '${feedback}'`);
     await page.screenshot({path: pathReports + './1.3-postNotPublished.png'});
 
     console.log(
-      "Scenario: 4. Asignar tag a Post y publicar actualización");
+      "Scenario: 4. Asignar tag a Page y publicar actualización");
 
     console.log(
       "  Given I login on Ghost page with<userAdmin> and <adminPass>");
@@ -231,48 +231,48 @@ PostPage.titleTest = postTitle;
     console.log("    Create tag success");
     
     console.log(
-      "  And I create a Post with <postTitle> and <postDesc>");
-    await page.click(DashboardPage.postsMenu);
-    await page.click(PostPage.newPostButton);
-    await page.type(PostEditPage.titleTextarea, postTitle);
-    await page.keyboard.press('Tab');
-    await page.type(PostEditPage.descEditor, postDesc);
+        "  When I create a Page with <pageTitle> and <pageDesc>");
+      await page.click(DashboardPage.pageMenu);
+      await page.click(PagePage.newPageButton);
+      await page.type(PageEditPage.titleTextarea, pageTitle);
+      await page.keyboard.press('Tab');
+      await page.type(PageEditPage.descEditor, pageDesc);
 
     await page.screenshot({path: pathReports + './1.4-createPost.png'});
-    console.log("    Create post success");
+    console.log("    Create page success");
 
     console.log(
-      "  And I add tag <tagtest1> to Post");
-    await page.click(PostEditPage.settingsMenuButton);
-    await page.type(PostEditPage.tagsInput, tag);
-    await page.click(PostEditPage.tagItemList);
+      "  And I add tag <tagtest1> to Page");
+    await page.click(PageEditPage.settingsMenuButton);
+    await page.type(PageEditPage.tagsInput, tag);
+    await page.click(PageEditPage.tagItemList);
     await page.screenshot({path: pathReports + './1.4-addTagPost.png'});
-    await page.click(PostEditPage.settingsMenuButton);
+    await page.click(PageEditPage.settingsMenuButton);
 
-    console.log("    Tag added on post success");
+    console.log("    Tag added on page success");
 
-    console.log("  And I publish a Post");
-    await page.click(PostEditPage.publishMenuButton);
-    await page.click(PostEditPage.publishButton);
-    await page.click(PostEditPage.publishConfirmButton);
+    console.log("  And I publish a Paget");
+    await page.click(PageEditPage.publishMenuButton);
+    await page.click(PageEditPage.publishButton);
+    // await page.click(PageEditPage.publishConfirmButton);
 
     await page.screenshot({path: pathReports + './1.4-publishPost.png'});
-    console.log("    Publish post success");
+    console.log("    Publish page success");
 
     console.log("  And I wait for 1 seconds");
     await new Promise(r => setTimeout(r, 1000));
 
     console.log(
-    "  Then I expect a published Post from settings with associated tag <tagtest1>"); 
-    await page.click(PostEditPage.settingsMenuButton);
-    await page.goto(url + await page.inputValue(PostEditPage.postUrlInput));
+    "  Then I expect a published Page from settings with associated tag <tagtest1>"); 
+    await page.click(PageEditPage.settingsMenuButton);
+    await page.goto(url + await page.inputValue(PageEditPage.pageUrlInput));
     await new Promise(r => setTimeout(r, 3000));
-    feedback = await page.isVisible(PostPage.tagTestLink);
-    console.log("    Tag visible on publication post: " + (feedback ? "success" : "fail"));
+    feedback = await page.isVisible(PagePage.tagTestLink);
+    console.log("    Tag visible on publication page: " + (feedback ? "success" : "fail"));
     await page.screenshot({path: pathReports + './1.4-tagOnPost.png'});
     
     console.log(
-      "Scenario: 5. Eliminar Post satisfactoriamente");
+      "Scenario: 5. Eliminar Page satisfactoriamente");
     console.log(
       "  Given I login on Ghost page with<userAdmin> and <adminPass>");
     await page.goto(urlAdmin);
@@ -287,37 +287,37 @@ PostPage.titleTest = postTitle;
     console.log("    Login success");
 
     console.log(
-      "  When I find a Post with <posttitle>");
+      "  When I find a Page with <pagetitle>");
     
     await page.goto(urlAdmin);
-    await page.click(DashboardPage.postsMenu);
-    if(await page.isVisible(PostPage.postSelectedItemList)) {
-      await page.click(PostPage.postSelectedItemList);
+    await page.click(DashboardPage.pageMenu);
+    if(await page.isVisible(PagePage.pageSelectedItemList)) {
+      await page.click(PagePage.pageSelectedItemList);
     }
 
     await page.screenshot({path: pathReports + './1.5-openPostSuccess.png'});
-    console.log("    Post found");
+    console.log("    Page found");
       
     let lastPostUrl = page.url();
 
     console.log(
-      "  And I delete a Post"); 
-    if(await page.isVisible(PostEditPage.settingsMenuButton)) {
-      await page.click(PostEditPage.settingsMenuButton);
-      await page.click(PostEditPage.postDeletebutton);
-      await page.click(PostEditPage.deleteConfirmButton);
+      "  And I delete a Page"); 
+    if(await page.isVisible(PageEditPage.settingsMenuButton)) {
+      await page.click(PageEditPage.settingsMenuButton);
+      await page.click(PageEditPage.pageDeletebutton);
+      await page.click(PageEditPage.deleteConfirmButton);
     }
 
     await page.screenshot({path: pathReports + './1.5-deletePostSuccess.png'});
-    console.log("    Post deleted");
+    console.log("    Page deleted");
 
     console.log(
-      "  Then I expect that Post deleted is not exists");
+      "  Then I expect that Page deleted is not exists");
     await page.goto(lastPostUrl);
-    await page.isVisible(PostEditPage.postNotFoundHeader);
+    await page.isVisible(PageEditPage.pageNotFoundHeader);
 
     await page.screenshot({path: pathReports + './1.5-postNotfoundSuccess.png'});
-    console.log("    Post not found success");
+    console.log("    Page not found success");
 
     //Finaliza el test
     await browser.close();  

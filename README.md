@@ -25,7 +25,7 @@
 | Tags            | Creación de un tag exitoso                                |   si   |  No          |  
 | 12              | Añadir miembro                                            |   si   |  Playwright  |  
 | 13              | modificar miembro                                         |   si   |  Playwright  |  
-| 14              | modificar perfil                                          |   si   |  Playwright  |  
+| 14              | eliminar miembro                                          |   si   |  Playwright  |  
 | 15              | invitar personas staff                                    |   si   |  Playwright  |  
 | 16              | reenviar invitacion staff                                 |   si   |  Playwright  |  
 | Tags            | Encontrar de un tag creado                                |   si   |  No          |  

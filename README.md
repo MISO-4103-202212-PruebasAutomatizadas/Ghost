@@ -7,7 +7,7 @@
 - Ronald Lugo <r.lugoq@uniandes.edu.co>
 - Juan Sebastian Ballesteros <j.ballesterosm@uniandes.edu.co>
 - Rafael Brache <r.brache@uniandes.edu.co>
-- 
+- Edison Morales
 
 ### Funcionalidades y escenarios probados
 | Funcionalidades | Escenarios                                                | Kraken | Segunda herr |

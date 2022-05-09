@@ -18,7 +18,7 @@
 | Post+Tag        | Asignar tag a Post y publicar actualización               |   si   |  Playwright  | 
 | Post            | Eliminar Post satisfactoriamente                          |   si   |  Playwright  | 
 | Page            | Creación y publicación de Page                            |   si   |  Playwright  | 
-| Page            | Modificar Page                                            |   si   |  Playwright  |  
+| Page            | Creación y publicación programada de Page exitosa         |   si   |  Playwright  |  
 | Page            | Eliminar Page                                             |   si   |  Playwright  |  
 | Page            | Despublicar un Page                                       |   si   |  Playwright  |  
 | Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |  
@@ -39,6 +39,7 @@
 	- **Page Objects**: 
 		- se definen en `features/web/pages_objects/clases.page.js`
 		- se usan en `features/step_definitions/step.js`
+		- se usan en `features/step_definitions/page-step.js`
 - **Playwright**
 	- **Given-When-Then**: `index.js`
 	- **Page Objects**: `page_objects/`
@@ -95,7 +96,7 @@
 	- MINUTESADDPUBLISHPOST: minutos a futuro para programar la publicación de un post 
 	- TAGTEST1: tag de prueba 
 	- <PAGETITLE> : titulo page de prueba
-	- <PAGEBODY> : Conetido de page de prueba
+	- <PAGEDESC> : Conetido de page de prueba
 2. page_objects: en caso que ghost local tenga una url diferente a `http://localhost:2368`, se debe actualizar en los siguientes page_objects
 	- dashboard.page.js
 	- login.page.js
@@ -104,6 +105,8 @@
 	- post.page.js
 	- tag_edit.page.js
 	- tags.page.js
+	- page.page.js
+	- page_edit.page.js
 
 **ejecución de pruebas**
 1. Pre-requisitos

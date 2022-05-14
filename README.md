@@ -169,7 +169,7 @@
 		- Workaround: comentarear 4 escenarios y ejecutarlos uno a uno 
 	- Excepción: errores con el formato `Error: element ("a[href*='posts']") still not displayed after 5000ms`
 		- Causa: dependiendo de los recursos de máquina, carga actual, entre otros factores, esporádicamente se pueden presentar estos casos
-		- Workaround: comentarear 4 escenarios y ejecutarlos uno a uno para comprobar el funcionamiento con la menor carga posible
+		- Workaround: comentarear 4 escenarios y ejecutarlos uno a uno para comprobar el funcionamiento con la menor carga posible (realizar lo mismo para los demás archivos .feature)
 	- Excepción: Error: Command failed: adb devices -l
 		- Causa: 'adb' is not recognized as an internal or external command
 		- Workaround: 
@@ -199,6 +199,13 @@
 	- postTitle: titulo post de prueba 
 	- postDesc: descripción de post de prueba 
 	- minutesAddPublishPost: minutos a futuro para programar la publicación de un post 
+	- tag: tag de prueba 
+1. page-index.js: es necesario actualizar userAdmin y adminPass
+	- userAdmin: usuario de ghost local 
+	- adminPass: password de ghost local 
+	- pageTitle: titulo page de prueba 
+	- pageDesc: descripción de page de prueba 
+	- minutesAddPublishPost: minutos a futuro para programar la publicación de un page 
 	- tag: tag de prueba 
 
 #### Resemblejs

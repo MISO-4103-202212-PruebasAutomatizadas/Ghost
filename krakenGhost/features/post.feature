@@ -8,7 +8,7 @@ Scenario: Creación y publicación inmediata de Post exitosa
   And I publish a Post 
   And I wait for 1 seconds
   Then I expect a published Post from settings with "<POSTTITLE>" and "<POSTDESC>"
-
+  
 @user2 @web 
 Scenario: Creación y publicación programada de Post exitosa
   Given I login on Ghost page with "<ADMIN1>" and "<PASSWORD1>" 
@@ -42,4 +42,5 @@ Scenario: Eliminar Post satisfactoriamente
   Given I login on Ghost page with "<ADMIN1>" and "<PASSWORD1>" 
   When I find a Post with "<POSTTITLE>"
   And I delete a Post 
+  And I wait for 1 seconds
   Then I expect that Post deleted is not exists

@@ -1,6 +1,6 @@
 # MISO - Pruebas automatizadas
 
-## Entrega semana 5
+## Entrega semana 6
 
 ### Integrantes
 
@@ -46,11 +46,23 @@
 
 ### Aplicación bajo pruebas 
 
-#### Ghost versión 4.46.0
+#### Ghost: pruebas de regresión
+**versión de referencia:** 3.42.0 
+**versión de prueba:** 4.46.0
 
-1. Pre-requisitos:
-	- versión de node: V16.15.0
-	- versión de npm: 8.5.5	
+1. Pre-requisitos: versiones compatibles con las dos versiones de Ghost
+	- versión de node: V14.19.1 
+	- versión de npm: 6.14.16 
+
+	**Opcional en windows: instalar nvm:**
+	- descargar instalador para windows: https://github.com/coreybutler/nvm-windows/releases
+	- abrir powershell como administrador
+	- `nvm install 14.19.1` | instalar versión de prerequisito
+	- `nvm ls` | listar versiones instaladas
+	- `nvm use 14.19.1` | usar versión específica
+	- abrir powershell con usuario normal
+	- `node -v` | confirmar versión actual de node
+
 2. Instalar Ghost-cli
 	- abrir terminal
 	- crear carpeta ghost-cli e ingresar
@@ -59,17 +71,37 @@
 	- instalar ghost-cli
 		- `npm install ghost-cli@latest`
 		- `cd ..`
+	- instalar versión de prueba
 		- `mkdir ghost `
 		- `cd ghost` 
 		- `..\ghost-cli\node_modules\.bin\ghost install 4.46.0 --local`
 	- en paso anterior, si no se ejecuta el comando cambiar el backslash por slash normal, es decir cambiar \ por /
 	- configuración de ghost. Confirmar url en pantalla. (el usuario y password que se configure se usarán más adelante) http://localhost:2368/ghost/#/setup 
+		- `ADMIN1: test@uniandes.edu.co`
+		- `PASSWORD1: Uniandes21`
 	- listar ghosts instalados 
 		- `..\ghost-cli\node_modules\.bin\ghost ls`
 	- detener ghost 
 		- `..\ghost-cli\node_modules\.bin\ghost stop`
-	- iniciar ghost 
-		- `..\ghost-cli\node_modules\.bin\ghost start`
+	- instalar versión de referencia
+	  - `mkdir ghost-v3`
+	  - `..\ghost-cli\node_modules\.bin\ghost install 3.42.0 --local`
+	- en paso anterior, si no se ejecuta el comando cambiar el backslash por slash normal, es decir cambiar \ por /
+	- detener ghost 
+	  - `..\ghost-cli\node_modules\.bin\ghost stop`
+	- configurar port de versión de ghost de referencia
+	- editar config.development.json para cambiar el puerto 
+	  - `url: http://localhost:2369/`
+	  - `server.port: 2369`
+	- iniciar ghost versión de referencia
+		- `cd ..\ghost-v3`
+	  - `..\ghost-cli\node_modules\.bin\ghost start`
+	- configuración de ghost. Confirmar url en pantalla. (registrar el mismo usuario y password de versión de prueba) http://localhost:2369/ghost/#/setup
+		- `ADMIN1: test@uniandes.edu.co`
+		- `PASSWORD1: Uniandes21`
+	- iniciar ghost versión de prueba
+	  - `cd ..\ghost`
+	  - `..\ghost-cli\node_modules\.bin\ghost start`
 
 ### Pruebas E2E
 
@@ -80,42 +112,58 @@
 
 #### Kraken
 
-**versiones**
-- versión de node: V16.15.0
-- versión de npm: 8.5.5
+**versiones** *versiones compatibles con las dos versiones de Ghost*
+- versión de node: V14.19.1 
+- versión de npm: 6.14.16 
 
 **configuraciones**
 - `cd .\krakenGhost`
 - `npm install`
 
 1. properties.json: es necesario actualizar ADMIN1 y PASSWORD1
-	- ADMIN1: usuario de ghost local 
-	- PASSWORD1: password de ghost local 
+	- ADMIN1: usuario de ghost local   -> *se espera que se sea el mismo en las dos versiones de ghost, en caso contrario se debe modificar en cada prueba*
+	- PASSWORD1: password de ghost local   -> *se espera que se sea el mismo en las dos versiones de ghost, en caso contrario se debe modificar en cada prueba*
 	- POSTTITLE: titulo post de prueba 
 	- POSTDESC: descripción de post de prueba 
 	- MINUTESADDPUBLISHPOST: minutos a futuro para programar la publicación de un post 
 	- TAGTEST1: tag de prueba 
-	- <PAGETITLE> : titulo page de prueba
-	- <PAGEDESC> : Conetido de page de prueba
-2. page_objects: en caso que ghost local tenga una url diferente a `http://localhost:2368`, se debe actualizar en los siguientes page_objects
-	- dashboard.page.js
-	- login.page.js
-	- page.js
-	- post_edit.page.js
-	- post.page.js
-	- tag_edit.page.js
-	- tags.page.js
-	- page.page.js
-	- page_edit.page.js
+	- PAGETITLE : titulo page de prueba
+	- PAGEDESC : Contenido de page de prueba
+	- PATHEXPORTSCREENSHOT: ../pruebasDeRegresion/report/ghostV    -> *Path de exportación. Se concatena con VERSIONGHOST*
+	- URL: http://localhost:2369/ | http://localhost:2368/   -> *la selección depende de la versión a probar. 2369 para Ghost V3.42.0, 2368 para Ghost 4.46.0*
+	- URLADMIN: http://localhost:2369/ghost | http://localhost:2368/ghost   -> *la selección depende de la versión a probar. 2369 para Ghost V3.42.0, 2368 para Ghost 4.46.0*
+	- VERSIONGHOST: 3 | 4  -> *3: versión de referencia Ghost V3.42.0, 4: versión de prueba Ghost 4.46.0*
 
 **ejecución de pruebas**
 1. Pre-requisitos
-	- Iniciar ghost 
+	- Iniciar ghost de referencia y ghost de prueba 
 	- Tener instalado el navegador chrome o similar donde se realizará la prueba
 	- Al ejecutarse por primera vez kraken otorgar permisos de privacidad, aceptar terminos en ventana emergente (solo en sistema operativo windows)
-2. Ejecutar en terminal externa o de vscode
+2. Configuración de usuario y password
+	- Configurar properties.json
+	- `ADMIN1: test@uniandes.edu.co`
+	- `PASSWORD1: Uniandes21`
+3. **Ejecutar para ghost de referencia**
+	- Configurar properties.json
+		- `URL: http://localhost:2369/`
+		- `URLADMIN: http://localhost:2369/ghost`
+		- `VERSIONGHOST: 3`
+4. Ejecutar en terminal externa o de vscode
 	`node .\node_modules\kraken-node\bin\kraken-node run`
-3. Manejo de excepciones
+5. Verificar la generación de imágenes
+	- `cd ..\pruebasDeRegresion\report\ghostV3`
+	- formato: `ghostV3/kraken_esc_${this.userId}_<descripcion_paso>.png`
+6. **Ejecutar para ghost de base**
+	- Configurar properties.json
+		- `URL: http://localhost:2368/`
+		- `URLADMIN: http://localhost:2368/ghost`
+		- `VERSIONGHOST: 4`
+7. Ejecutar en terminal externa o de vscode
+	`node .\node_modules\kraken-node\bin\kraken-node run`
+8. Verificar la generación de imágenes
+	- `cd ..\pruebasDeRegresion\report\ghostV4`
+	- formato: `ghostV4/kraken_esc_${this.userId}_<descripcion_paso>.png`
+9. Manejo de excepciones
 	- Excepción: EPERM: operation not permitted. Error por permisos en carpetas al iniciar más de una instancia de navegador
 		- Causa: incompatibilidad de permisos en directorios windows
 		- Workaround: comentarear 4 escenarios y ejecutarlos uno a uno 
@@ -137,14 +185,13 @@
 		- Workaround: Ingresar a base de datos de Ghost `ghost\content\data\ghost-local` con un visor de sqlite / editar tabla **brute** / cambiar el valor del campo count de 100 a 1. Confirmar los cambios
 
 #### Playwrite
-** versiones **
-- versión de node: V16.15.0
-- versión de npm: 8.5.5
+**versiones**
+- versión de node: V14.19.1 
+- versión de npm: 6.14.16
 
-** configuraciones **
+**configuraciones**
 - `cd .\playwrightGhost`
 - `npm install playwright`
-- `code .`
 
 1. index.js: es necesario actualizar userAdmin y adminPass
 	- userAdmin: usuario de ghost local 
@@ -153,6 +200,42 @@
 	- postDesc: descripción de post de prueba 
 	- minutesAddPublishPost: minutos a futuro para programar la publicación de un post 
 	- tag: tag de prueba 
+
+#### Resemblejs
+**versiones**
+- versión de node: V14.19.1 
+- versión de npm: 6.14.16
+
+**configuraciones**
+- `cd .\pruebasDeRegresion\`
+- `npm install`
+
+1. .\resemblejs\config.json
+	- referencePath: ../report/ghostV3/  -> *path imágenes Ghost de referencia*
+  - testPath: ../report/ghostV4/  -> *path imágenes Ghost de prueba*
+  - resultsPath: ../report/results/  -> *path resultados de resemblejs*
+  - reportJsonName: results.json  -> *nombre del archivo json generado por resemblejs*
+  - optionsCompare:  -> *opciones de configuración de la comparación*
+    - output: 
+      - errorColor: 
+        - red: 255
+        - green: 0
+        - blue: 255
+      - errorType: movement
+      - largeImageThreshold: 1200
+      - useCrossOrigin: false
+      - outputDiff: true
+  - scaleToSameSize: true  -> *comparación de imágenes en la misma escala*
+  - ignore: "antialiasing  
+2. ejecutar pruebas de regresión con resemblejs
+	- `cd .\resemblejs\`
+	- `node .\index.js`
+3. verificar generación de resultados
+	- `path: ..\report\results\`  -> *verificar creación de imágenes y results.json*
+4. iniciar servidor web local para consultar reporte
+	- `cd pruebasDeRegresion\`
+	-	`node .\node_modules\http-server\bin\http-server`
+	- `ir a http://127.0.0.1:8080/report/`  -> *confirmar que el puerto que inició el servidor sea el 8080* 
 
 ### Pros y contra
 
@@ -188,3 +271,24 @@
 	- Al manejar todos los escenarios en el index.js, dificulta la lectura, entendimiento, modificación y ejecución independiente de los mismos
 	- Ausencia per se de reportes útiles para seguimiento o para un stakeholder
 	- Ausencia por default de mensajes en pantalla que indiquen el flujo de las ejecuciones
+
+**Resemblejs**
+- PROS
+	- Facilidad de integración en diferentes contextos. La ejecución de la comparación se realiza instanciando el método compareImages
+	- Capacidad de personalización de la prueba a través del config.json
+	- Metadata generada del resultado de la comparación, con información como el grado de match y el tiempo de procesamiento
+	- Generación de imágenes útiles para la regresión visual
+- CONTRA
+	- No genera un reporte nativo que permita identificar toda la información que brinda
+	- La calidad de la imágen de comparación es buena, sin embargo podría mejorar
+
+**Backstop**
+- PROS
+	- Integración nativa con Puppeteer y Playwright 
+	- Flexibilidad de uso comparando con una versión previamente aprobada, o con dos url simultáneas
+	- Grado de granularidad en la configuración, principalmente en la definición del nivel de comparación que indica que son similares para identificar diferencias
+	- El reporte interactivo es muy usable y útil, tanto en la pantalla general como al ingresar a una imágen específica
+	- La calidad de la imágen resultado es muy buena
+- CONTRA
+	- Al tener integraciones nativas, genera mayor dificultad al tratar de integrarlo con otras herramientas
+	- No se logró identificar como usarlo a partir de imágenes ya existentes

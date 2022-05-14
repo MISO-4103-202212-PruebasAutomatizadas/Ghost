@@ -7,17 +7,18 @@ Given("I create a new tag with {kraken-string} name and {kraken-string} descript
   TagsNewPage.driver = this.driver;
   await TagsNewPage.open();
   await TagsNewPage.tagNameInput.setValue(tagName);
-  await TagsNewPage.tagDescriptionTextarea.setValue(tagDescrition); 
-  return await TagsNewPage.saveButton.click();  
+  await TagsNewPage.tagDescriptionTextarea.setValue(tagDescrition);
+  await this.driver.saveScreenshot('./captura_1.png');
+  return await TagsNewPage.saveButton.click();
 });
 
 When("I find a tag with {kraken-string} name", async function(tagName) {
   TagsPage.driver = this.driver;
   TagsPage.tagTest = tagName;
-
   await TagsPage.open();
   await TagsPage.tagsList.waitForDisplayed({ timeout: 5000 });
-  if(await TagsPage.tagListItem.isDisplayed()){
+  if(await TagsPage.tagListItem.isDisplayed()){    
+    await this.driver.saveScreenshot('./captura_2.png');
     await TagsPage.tagListItem.click();
   }
 })
@@ -25,17 +26,17 @@ When("I find a tag with {kraken-string} name", async function(tagName) {
 When("I update a tag with {kraken-string} slug and {kraken-string} description", async function(tagSlug, tagDescription) {
   TagsEditPage.driver = this.driver;
   TagsEditPage.tagSlug = tagSlug;
-
   await TagsEditPage.open();
   await TagsEditPage.tagDescriptionTextarea.setValue(tagDescription);
+  await this.driver.saveScreenshot('./captura_3.png');
   return await TagsEditPage.saveButton.click();  
 })
 
 Then("I deleted a tag with {kraken-string} slug", async function(tagSlug) {
   TagsEditPage.driver = this.driver;
   TagsEditPage.tagSlug = tagSlug;
-
   await TagsEditPage.open();
   await TagsEditPage.deleteButton.click();
+  await this.driver.saveScreenshot('./captura_4.png');
   return await TagsEditPage.deleteConfirmButton.click();  
 })

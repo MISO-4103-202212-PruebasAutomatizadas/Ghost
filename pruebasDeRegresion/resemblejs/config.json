@@ -1,0 +1,21 @@
+{
+  "referencePath": "../report/ghostV3/",
+  "testPath": "../report/ghostV4/",
+  "resultsPath": "../report/results/",
+  "reportJsonName": "results.json",
+  "optionsCompare": {
+    "output": {
+        "errorColor": {
+            "red": 255,
+            "green": 0,
+            "blue": 255
+        },
+        "errorType": "movement",
+        "largeImageThreshold": 1200,
+        "useCrossOrigin": false,
+        "outputDiff": true
+    },
+    "scaleToSameSize": true,
+    "ignore": "antialiasing"
+  }
+}

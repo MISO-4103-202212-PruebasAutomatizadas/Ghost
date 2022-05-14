@@ -7,7 +7,7 @@ class DashboardPage extends Page {
   get tagsMenu() { return this._driver.$("a[href$='tags/']") }
 
   async open(urlAdmin) {
-    await super.open(`${urlAdmin}#/dashboard`)
+    await super.open(`${urlAdmin}#/site`)
   }
 }
 

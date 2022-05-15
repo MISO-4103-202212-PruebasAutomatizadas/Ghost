@@ -20,7 +20,7 @@ class PageEditPage extends Page {
   get tagItemList() { return ".ember-power-select-options" } 
   get pageDeletebutton() { return "button.settings-menu-delete-button" }
   get deleteConfirmButton() { return "section.modal-content .modal-footer button:nth-of-type(2)" }
-  get postNotFoundHeader() { return "h1.error-code-size=404" }
+  get postNotFoundHeader() { return 'h1.error-code-size:has-text("404")' }
 
   async open() {
     await super.open('http://localhost:2369/ghost/#/editor/page')

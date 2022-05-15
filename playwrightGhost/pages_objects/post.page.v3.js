@@ -11,7 +11,7 @@ class PostPage extends Page {
   get postCodeErrorSection() { return "section.error-message h1.error-code" }
   get tagTestLink() { return "section.post-full-tags a[href$='"+this.tagTest+"/']" }
   get postsList() { return "ol.posts-list"}
-  get postSelectedItemList() { return "h3.gh-content-entry-title="+this.titleTest }
+  get postSelectedItemList() { return 'h3.gh-content-entry-title:has-text("'+this.titleTest+'")' }
 
   // async open(urlAdmin) {
   //   await super.open(`${urlAdmin}ghost/#/posts`)

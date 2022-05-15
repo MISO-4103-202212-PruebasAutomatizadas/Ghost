@@ -247,17 +247,24 @@ PagePage.titleTest = pageTitle;
       await page.keyboard.press('Tab');
       await page.type(PageEditPage.descEditor, pageDesc);
 
+
     await page.screenshot({path: pathReports + './1.4-createPage.png'});
     console.log("    Create page success");
 
     console.log(
       "  And I add tag <tagtest1> to Page");
-    await page.click(PageEditPage.settingsMenuButton);
+      if (ghostVersion === 4) {
+
+        await page.click(PageEditPage.settingsMenuButton);
+      }
     await page.type(PageEditPage.tagsInput, tag);
     await page.click(PageEditPage.tagItemList);
     await page.screenshot({path: pathReports + './1.4-addTagPage.png'});
     await page.screenshot({path: pathScreenshots + '/playwright_esc_addTag_page.png'});
-    await page.click(PageEditPage.settingsMenuButton);
+    if (ghostVersion === 4) {
+
+      await page.click(PageEditPage.settingsMenuButton);
+    }
 
     console.log("    Tag added on page success");
 
@@ -323,13 +330,13 @@ PagePage.titleTest = pageTitle;
     await page.screenshot({path: pathScreenshots + '/playwright_esc_deletePage_page.png'});
     console.log("    Page deleted");
 
-    console.log(
-      "  Then I expect that Page deleted is not exists");
-    await page.goto(lastPostUrl);
-    await page.isVisible(PageEditPage.pageNotFoundHeader);
+    // console.log(
+    //   "  Then I expect that Page deleted is not exists");
+    // await page.goto(lastPostUrl);
+    // await page.isVisible(PageEditPage.pageNotFoundHeader);
 
-    await page.screenshot({path: pathReports + './1.5-pageNotfoundSuccess.png'});
-    console.log("    Page not found success");
+    // await page.screenshot({path: pathReports + './1.5-pageNotfoundSuccess.png'});
+    // console.log("    Page not found success");
 
     //Finaliza el test
     await browser.close();  

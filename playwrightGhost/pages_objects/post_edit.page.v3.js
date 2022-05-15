@@ -19,9 +19,9 @@ class PostEditPage extends Page {
   get postUrlInput() { return "#url" }
   get tagsInput() { return "#tag-input input.ember-power-select-trigger-multiple-input" }
   get tagItemList() { return ".ember-power-select-options" } 
-  get postDeletebutton() { return "button.settings-menu-delete-button" }
+  get pageDeletebutton() { return "button.settings-menu-delete-button" }
   get deleteConfirmButton() { return "section.modal-content .modal-footer button:nth-of-type(2)" }
-  get postNotFoundHeader() { return "h1.error-code-size=404" }
+  get pageNotFoundHeader() { return 'h1.error-code-size:has-text("404")' }
 
   // async open(urlAdmin) {
   //   await super.open(`${urlAdmin}ghost/#/editor/post`)
@@ -31,5 +31,5 @@ class PostEditPage extends Page {
   //   await super.open(path)
   // }
 }
-
+ 
 module.exports = new PostEditPage()

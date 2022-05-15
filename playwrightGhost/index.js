@@ -252,12 +252,14 @@ PostPage.titleTest = postTitle;
 
     console.log(
       "  And I add tag <tagtest1> to Post");
-    await page.click(PostEditPage.settingsMenuButton);
+      await page.click(PostEditPage.settingsMenuButton);
     await page.type(PostEditPage.tagsInput, tag);
     await page.click(PostEditPage.tagItemList);
     await page.screenshot({path: pathReports + './1.4-addTagPost.png'});
     await page.screenshot({path: pathScreenshots + '/playwright_esc_add_tag_to_post.png'});
-    await page.click(PostEditPage.settingsMenuButton);
+ 
+      await page.click(PostEditPage.settingsMenuButton);
+  
 
     console.log("    Tag added on post success");
 

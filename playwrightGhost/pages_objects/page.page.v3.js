@@ -11,7 +11,7 @@ class PagePage extends Page {
   get pageCodeErrorSection() { return "section.error-message h1.error-code" }
   get tagTestLink() { return "section.article-tag a[href$='"+this.tagTest+"/']" }
   get pagesList() { return "ol.gh-list" }
-  get pageSelectedItemList() { return "h3.gh-content-entry-title="+this.titleTest }
+  get pageSelectedItemList() { return 'h3.gh-content-entry-title:has-text("'+this.titleTest+'")'  }
 
   async open() {
     await super.open('http://localhost:2369/ghost/#/pages')

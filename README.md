@@ -201,7 +201,7 @@
 	- postDesc: descripción de post de prueba 
 	- minutesAddPublishPost: minutos a futuro para programar la publicación de un post 
 	- tag: tag de prueba
-	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas. 
+	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas (node index.js). 
 2. index-page.js: es necesario actualizar userAdmin y adminPass
 	- userAdmin: usuario de ghost local 
 	- adminPass: password de ghost local 
@@ -209,7 +209,7 @@
 	- pageDesc: descripción de page de prueba 
 	- minutesAddPublishPost: minutos a futuro para programar la publicación de un page 
 	- tag: tag de prueba 
-	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas. 
+	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas (node index-page.js). 
 
 
 

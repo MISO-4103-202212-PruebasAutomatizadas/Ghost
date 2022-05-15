@@ -184,7 +184,7 @@
 		- Causa: Configuración por defecto de Ghost 
 		- Workaround: Ingresar a base de datos de Ghost `ghost\content\data\ghost-local` con un visor de sqlite / editar tabla **brute** / cambiar el valor del campo count de 100 a 1. Confirmar los cambios
 
-#### Playwrite
+#### Playwright
 **versiones**
 - versión de node: V14.19.1 
 - versión de npm: 6.14.16
@@ -207,6 +207,7 @@
 	- pageDesc: descripción de page de prueba 
 	- minutesAddPublishPost: minutos a futuro para programar la publicación de un page 
 	- tag: tag de prueba 
+	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas. 
 
 #### Resemblejs
 **versiones**

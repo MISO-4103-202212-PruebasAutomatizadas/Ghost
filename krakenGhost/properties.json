@@ -6,9 +6,9 @@
     "MINUTESADDPUBLISHPOST": 60,
     "TAGTEST1": "tag-test",
     "PAGETITLE": "Nuevo Page",
-    "PAGEDESC": "Descripción del nuevo Post",
+    "PAGEDESC": "Descripción del nuevo Page",
     "PATHEXPORTSCREENSHOT": "../pruebasDeRegresion/report/ghostV",
-    "URL": "http://localhost:2368/",
-    "URLADMIN": "http://localhost:2368/ghost/",
-    "VERSIONGHOST": 4
+    "URL": "http://localhost:2369/",
+    "URLADMIN": "http://localhost:2369/ghost/",
+    "VERSIONGHOST": 3
 }

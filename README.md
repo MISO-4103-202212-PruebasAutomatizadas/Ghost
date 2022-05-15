@@ -23,11 +23,11 @@
 | Page            | Despublicar un Page                                       |   si   |  Playwright  |  
 | Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |  
 | Tags            | Creación de un tag exitoso                                |   si   |  No          |  
-| 12              | Añadir miembro                                            |   si   |  Playwright  |  
-| 13              | modificar miembro                                         |   si   |  Playwright  |  
-| 14              | eliminar miembro                                          |   si   |  Playwright  |  
-| 15              | invitar personas staff                                    |   si   |  Playwright  |  
-| 16              | reenviar invitacion staff                                 |   si   |  Playwright  |  
+| Member          | Añadir miembro                                            |   si   |  Playwright  |  
+| Member          | modificar miembro creado                                  |   si   |  Playwright  |  
+| Member          | eliminar miembro creado                                   |   si   |  Playwright  |  
+| Member          | Encontrar miembro creado                                  |   si   |  Playwright  |  
+| Member          | Buscar miembro creado                                     |   si   |  Playwright  |  
 | Tags            | Encontrar de un tag creado                                |   si   |  No          |  
 | Tags            | Actualizacion de un tag exitosa                           |   si   |  No          |  
 | Tags            | Eliminacion de un tag exitoso                             |   si   |  No          |  

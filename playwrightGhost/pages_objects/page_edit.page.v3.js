@@ -9,7 +9,7 @@ class PageEditPage extends Page {
   get unpublishRadio() { return ".gh-publishmenu-radio-button" }
   get publishConfirmButton() { return "button.gh-publishmenu-button" }
   //get previewButton() { return "section.flex button:nth-of-type(1)") }
-  get settingsMenuButton() { return "button.page-settings" }
+  get settingsMenuButton() { return "button.post-settings" }
   get settingsMenuOpenSpan() { return ".settings-menu-open" }
   get schedulePublishRadio() { return ".gh-publishmenu-radio:nth-of-type(2)" }
   get scheduleDatePublishInput() { return ".gh-date-time-picker-date input[type='text']" }

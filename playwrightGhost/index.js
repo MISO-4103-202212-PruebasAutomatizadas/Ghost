@@ -1,15 +1,17 @@
-//Importar Playwright
+ const ghostVersion = 3;
+ //Importar Playwright
 const playwright = require('playwright');
-const LoginPage = require('./pages_objects/login.page');
-const DashboardPage = require('./pages_objects/dashboard.page');
-const PostPage = require('./pages_objects/post.page');
-const PostEditPage = require('./pages_objects/post_edit.page');
-const TagsPage = require('./pages_objects/tags.page');
-const TagEditPage = require('./pages_objects/tag_edit.page');
+const LoginPage = ghostVersion == 4 ? require('./pages_objects/login.page') : require('./pages_objects/login.page.v3');
+const DashboardPage = ghostVersion == 4 ? require('./pages_objects/dashboard.page') : require('./pages_objects/dashboard.page.v3');
+const PostPage = ghostVersion == 4 ? require('./pages_objects/post.page') : require('./pages_objects/post.page.v3');
+const PostEditPage = ghostVersion == 4 ? require('./pages_objects/post_edit.page') : require('./pages_objects/post_edit.page.v3');
+const TagsPage = ghostVersion == 4 ? require('./pages_objects/tags.page') : require('./pages_objects/tags.page.v3');
+const TagEditPage = ghostVersion == 4 ? require('./pages_objects/tag_edit.page') : require('./pages_objects/tag_edit.page.v3');
 
-const url = 'http://localhost:2368/';
+const url = ghostVersion == 4 ? 'http://localhost:2368/' : 'http://localhost:2369/';
 const urlAdmin = url + 'Ghost';
 const pathReports = './reports/'
+const pathScreenshots = ghostVersion == 4 ? '../pruebasDeRegresion/report/ghostV4' : '../pruebasDeRegresion/report/ghostV3';
 const userAdmin = "test@uniandes.edu.co";
 const adminPass = "Uniandes21";
 const postTitle = "Nuevo Post";
@@ -65,6 +67,7 @@ PostPage.titleTest = postTitle;
     await page.type(PostEditPage.descEditor, postDesc);
 
     await page.screenshot({path: pathReports + './1.1-createPost.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_create_post.png'});
     console.log("    Create post success");
 
     console.log("  And I publish a Post");
@@ -73,6 +76,7 @@ PostPage.titleTest = postTitle;
     await page.click(PostEditPage.publishConfirmButton);
 
     await page.screenshot({path: pathReports + './1.1-publishPost.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_publish_post.png'});
     console.log("    Publish post success");
 
     console.log("  And I wait for 1 seconds");
@@ -131,6 +135,7 @@ PostPage.titleTest = postTitle;
     await page.click(PostEditPage.publishConfirmButton);
 
     await page.screenshot({path: pathReports + './1.2-scheduledPost.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_scheduled_post.png'});
     console.log("    scheduled publish post success");
     
     console.log(
@@ -184,11 +189,14 @@ PostPage.titleTest = postTitle;
     await new Promise(r => setTimeout(r, 1000));
 
     console.log("  And I unpublished a Post ");
-    await page.click(PostEditPage.publishMenuButton);
+    if (ghostVersion === 4) {
+      await page.click(PostEditPage.publishMenuButton);
+    }
     await page.click(PostEditPage.unpublishRadio);
     await page.click(PostEditPage.publishButton);
 
     await page.screenshot({path: pathReports + './1.3-unpublishedPost.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_unpublished_post.png'});
     console.log("    Unpublish post success");
 
     console.log("  And I wait for 1 seconds");
@@ -228,6 +236,7 @@ PostPage.titleTest = postTitle;
       await page.click(TagEditPage.saveButton);
     }
     await page.screenshot({path: pathReports + './1.4-createTagSuccess.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_create_tag.png'});
     console.log("    Create tag success");
     
     console.log(
@@ -247,6 +256,7 @@ PostPage.titleTest = postTitle;
     await page.type(PostEditPage.tagsInput, tag);
     await page.click(PostEditPage.tagItemList);
     await page.screenshot({path: pathReports + './1.4-addTagPost.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_add_tag_to_post.png'});
     await page.click(PostEditPage.settingsMenuButton);
 
     console.log("    Tag added on post success");
@@ -270,6 +280,7 @@ PostPage.titleTest = postTitle;
     feedback = await page.isVisible(PostPage.tagTestLink);
     console.log("    Tag visible on publication post: " + (feedback ? "success" : "fail"));
     await page.screenshot({path: pathReports + './1.4-tagOnPost.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_tagOnPost_post.png'});
     
     console.log(
       "Scenario: 5. Eliminar Post satisfactoriamente");
@@ -309,6 +320,7 @@ PostPage.titleTest = postTitle;
     }
 
     await page.screenshot({path: pathReports + './1.5-deletePostSuccess.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_delete_post.png'});
     console.log("    Post deleted");
 
     console.log(

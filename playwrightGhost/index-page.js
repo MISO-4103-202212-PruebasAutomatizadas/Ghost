@@ -280,6 +280,7 @@ PagePage.titleTest = pageTitle;
     feedback = await page.isVisible(PagePage.tagTestLink);
     console.log("    Tag visible on publication page: " + (feedback ? "success" : "fail"));
     await page.screenshot({path: pathReports + './1.4-tagOnPage.png'});
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_tagOnPage_page.png'});
     
     console.log(
       "Scenario: 5. Eliminar Page satisfactoriamente");

@@ -20,12 +20,7 @@ const adminPass = "abcd1234*$";
     // SETTINGS
     console.log(("Browser: " + browserType).padEnd(100, "_"));
     console.log("Feature: Gestion de tags de ghost".padEnd(100, "_"));
-    console.log(
-      "Description: Como usuario quiero gestionar los tags en ghost para usarse en la creacion de post".padEnd(
-        100,
-        "_"
-      )
-    );
+    console.log("Description: Como usuario quiero gestionar los tags en ghost para usarse en la creacion de post".padEnd(100,"_"));
     console.log("\r");
 
     // RUN SCENARIOS 1
@@ -49,6 +44,7 @@ const adminPass = "abcd1234*$";
     await page.type(TagNewPage.nameInput, "tag_1");
     await page.type(TagNewPage.descriptionInput, "description_tag_1");
     await page.click(TagNewPage.saveButton);
+  
     console.log("Then I wait for 1 seconds".padEnd(100, "_"));
     await new Promise(r => setTimeout(r, 1000));
   
@@ -81,7 +77,7 @@ const adminPass = "abcd1234*$";
     await page.isVisible(TagsPage.tagListItem); 
     await page.screenshot({ path: pathReports + "./1.2-loginSuccess.png" });
 
-    console.log("Then I wait for 1 seconds")
+    console.log("Then I wait for 1 seconds".padEnd(100, "_"))
     await new Promise(r => setTimeout(r, 1000));
 
     ////////////////////////////////////////////////////////////////////////////////////////

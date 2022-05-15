@@ -209,8 +209,6 @@
 	- tag: tag de prueba 
 	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas. 
 
-	Por alguna razón para la v3 de ghost las pruebas no pasan de "And I add tag <tagtest1> to Page". Arroja un timeout, pero varios escenarios si son         generados.
-
 
 
 #### Resemblejs

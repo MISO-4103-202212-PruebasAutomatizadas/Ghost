@@ -2,7 +2,7 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 const properties = require('../../../properties.json');
 
 const LoginPage = (properties.VERSIONGHOST == 3) ? require('../pages_objects/login.page.v3') : require('../pages_objects/login.page');
-const MemberNewPage = require('../pages_objects/member_create.page');
+const MemberNewPage = (properties.VERSIONGHOST == 3) ? require('../pages_objects/member_create.page.v3') : require('../pages_objects/member_create.page');
 const Member = require('../pages_objects/member.page');
 const MemberEdit = require('../pages_objects/member_edit.page');
 const MemberDelete = require('../pages_objects/member_delete.page');
@@ -30,7 +30,7 @@ const MemberGhost = {
         When("I create a new member with {kraken-string} name and {kraken-string} email and {kraken-string} note", async function(memberName, emailMember, noteMember) {
             MemberNewPage.driver = this.driver;
 
-            await MemberNewPage.open();
+            await MemberNewPage.open(properties.URLADMIN);
             await MemberNewPage.memberNameInput.setValue(memberName);
             await MemberNewPage.memberEmailInput.setValue(emailMember);
             await MemberNewPage.memberDescriptionTextarea.setValue(noteMember); 
@@ -43,7 +43,7 @@ const MemberGhost = {
             Member.driver = this.driver;
             Member.memberEmailTest = emailMember;
 
-            await Member.open();
+            await Member.open(properties.URLADMIN);
             if(await Member.memberListItem.isDisplayed()){
                 await Member.memberListItem.click();
             }
@@ -56,7 +56,7 @@ const MemberGhost = {
             Member.driver = this.driver;
             Member.memberEmailTest = emailMember;
 
-            await Member.open();
+            await Member.open(properties.URLADMIN);
 
             await Member.emailSearchInput.setValue(emailMember);
             if(await Member.memberListItem.isDisplayed()){

@@ -11,8 +11,8 @@ class MemberPage extends Page {
     return this._driver.$("input.gh-members-list-searchfield");
   }
 
-  async open() {
-    await super.open("http://localhost:2368/ghost/#/members");
+  async open( urlBase ) {
+    await super.open(urlBase + "members");
   }
 }
 

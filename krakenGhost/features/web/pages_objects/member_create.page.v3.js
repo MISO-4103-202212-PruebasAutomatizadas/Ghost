@@ -15,7 +15,7 @@ class MemberNewPage extends Page {
     return this._driver.$("textarea[id='member-note']");
   }
 
-  get saveButton() { return this._driver.$('button[class="gh-btn gh-btn-primary gh-btn-icon ember-view"]') }  
+  get saveButton() { return this._driver.$('button[class="gh-btn gh-btn-blue gh-btn-icon ember-view"]') }  
 
   async open( urlBase ) {
     await super.open(urlBase + "members/new");

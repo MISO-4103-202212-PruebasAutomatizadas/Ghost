@@ -17,6 +17,18 @@ class MemberNewPage extends Page {
   get saveButtonUpdate() {
     return "button.gh-btn-primary";
   }
+
+  get deleteButtom() {
+    return "button.mr2 span.red";
+  }
+
+  get deleteFinalButtom() {
+    return "button.gh-btn-red";
+  }
+
+  get searchInput() {
+    return "input.gh-members-list-searchfield";
+  }
 }
 
 module.exports = new MemberNewPage();

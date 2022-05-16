@@ -1,15 +1,19 @@
 const playwright = require("playwright");
-const LoginPage = require("./pages_objects/login.page");
-const DashboardPage = require("./pages_objects/dashboard.page");
-const TagsPage = require('./pages_objects/tags.page');
-const TagNewPage = require('./pages_objects/tags_new.page');
+const properties  = require('./properties.json');
+
+const LoginPage = properties.version == 4 ? require('./pages_objects/login.page') : require('./pages_objects/login.page.v3');
+const DashboardPage = properties.version == 4 ? require('./pages_objects/dashboard.page') : require('./pages_objects/dashboard.page.v3');
+const TagsPage = properties.version == 4 ? require('./pages_objects/tags.page') : require('./pages_objects/tags.page.v3');
+
+const TagNewPage = properties.version == 4 ? require('./pages_objects/tags_new.page') :  require('./pages_objects/tags_new.page.v3');
 const TagEditPage = require('./pages_objects/tag_edit.page');
 
-const url = "http://localhost:2368/";
+const url = properties.url;
 const urlAdmin = url + "Ghost";
 const pathReports = "./reports/";
-const userAdmin = "moralejov@gmail.com";
-const adminPass = "abcd1234*$";
+const pathScreenshots = properties.version == 4 ? '../pruebasDeRegresion/report/ghostV4' : '../pruebasDeRegresion/report/ghostV3';
+const userAdmin = properties.userAdmin;
+const adminPass = properties.adminPass;
 
 (async () => {
   for (const browserType of ["chromium"]) {
@@ -28,17 +32,23 @@ const adminPass = "abcd1234*$";
   }
 
   async function runScenarios(page) {
+
+    console.log(urlAdmin);
     console.log("_".padEnd(100, "_"));
     console.log("Scenario: 1. Creación de un tag exitoso".padEnd(100, "_"));
     console.log("Given I login on Ghost page with <ADMIN1> and <PASSWORD1>".padEnd(100,"_"));
     await page.goto(urlAdmin);
     await page.type(LoginPage.emailInput, userAdmin);
     await page.type(LoginPage.passwInput, adminPass);
-    await page.click(LoginPage.signInButton);    
-    await page.click(DashboardPage.tagsMenu);
-    await page.click(TagsPage.newTagButton);
-    await page.screenshot({ path: pathReports + "./1.1-loginSuccess.png" });    
+    await page.click(LoginPage.signInButton);       
+    await new Promise(r => setTimeout(r, 5000)); 
     
+    await page.click(DashboardPage.tagsMenu);
+    await page.click(TagsPage.newTagButton);   
+
+    await page.screenshot({ path: pathReports + "./playwright_esc_create_tag.png" });    
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_create_post.png'});
+
     console.log(`When I create a new tag with tag_1 name and "description_tag_1" description`)
     TagsPage.tagTest = "tag_1";
     await page.type(TagNewPage.nameInput, "tag_1");
@@ -74,8 +84,10 @@ const adminPass = "abcd1234*$";
     console.log('And I find a tag with "tag_2" name'.padEnd(100, "_"));
     TagsPage.tagTest = "tag_2";
     await page.click(DashboardPage.tagsMenu);
-    await page.isVisible(TagsPage.tagListItem); 
-    await page.screenshot({ path: pathReports + "./1.2-loginSuccess.png" });
+    await page.isVisible(TagsPage.tagListItem);
+
+    await page.screenshot({ path: pathReports + "./playwright_esc_find_tag.png" });
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_find_tag.png'});
 
     console.log("Then I wait for 1 seconds".padEnd(100, "_"))
     await new Promise(r => setTimeout(r, 1000));
@@ -109,7 +121,10 @@ const adminPass = "abcd1234*$";
     
     console.log('And I update a tag with "tag_3" slug and "description_tag_3_update" description');
     await page.type(TagNewPage.descriptionInput, "description_tag_3_update");
-    await page.screenshot({ path: pathReports + "./1.3-loginSuccess.png" });    
+    
+    await page.screenshot({ path: pathReports + "./playwright_esc_update_tag.png" });    
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_update_tag.png'});
+
     await page.click(TagEditPage.saveButton);
 
     console.log("Then I wait for 1 seconds")
@@ -147,7 +162,10 @@ const adminPass = "abcd1234*$";
 
     console.log('And I deleted a tag with "tag_4" slug');
     await page.click(TagEditPage.deleteButton);
-    await page.screenshot({ path: pathReports + "./1.4-loginSuccess.png" });
+
+    await page.screenshot({ path: pathReports + "./playwright_esc_delete_tag.png" });
+    await page.screenshot({path: pathScreenshots + '/playwright_esc_delete_tag.png'});
+
     await page.click(TagEditPage.confirmDeleteButton);
 
     console.log("Then I wait for 1 seconds".padEnd(100, "_"));

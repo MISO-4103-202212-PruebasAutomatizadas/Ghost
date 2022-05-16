@@ -19,7 +19,7 @@ class MemberNewPage extends Page {
   }
 
   get deleteButtom() {
-    return "button.mr2 span.red";
+    return "button.gh-btn-red";
   }
 
   get deleteFinalButtom() {

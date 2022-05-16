@@ -1,6 +1,6 @@
 {
-    "ADMIN1": "test@uniandes.edu.co",
-    "PASSWORD1": "Uniandes21",
+    "ADMIN1": "r.brache@uniandes.edu.co",
+    "PASSWORD1": "uniandes21",
     "POSTTITLE": "Nuevo Post",
     "POSTDESC": "Descripción del nuevo Post",
     "MINUTESADDPUBLISHPOST": 60,
@@ -8,7 +8,7 @@
     "PAGETITLE": "Nuevo Page",
     "PAGEDESC": "Descripción del nuevo Page",
     "PATHEXPORTSCREENSHOT": "../pruebasDeRegresion/report/ghostV",
-    "URL": "http://localhost:2369/",
-    "URLADMIN": "http://localhost:2369/ghost/",
+    "URL": "https://pruebas-automatizadas.herokuapp.com/",
+    "URLADMIN": "https://pruebas-automatizadas.herokuapp.com/ghost/",
     "VERSIONGHOST": 3
 }

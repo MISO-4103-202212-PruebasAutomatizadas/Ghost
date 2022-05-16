@@ -23,11 +23,11 @@
 | Page            | Despublicar un Page                                       |   si   |  Playwright  |  
 | Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |
 | Tags            | Creación de un tag exitoso                                |   si   |  Playwright  |  
-| 12              | Añadir miembro                                            |   si   |  Playwright  |  
-| 13              | modificar miembro                                         |   si   |  Playwright  |  
-| 14              | eliminar miembro                                          |   si   |  Playwright  |  
-| 15              | invitar personas staff                                    |   si   |  Playwright  |  
-| 16              | reenviar invitacion staff                                 |   si   |  Playwright  |  
+| Member          | Añadir miembro                                            |   si   |  Playwright  |  
+| Member          | modificar miembro creado                                  |   si   |  Playwright  |  
+| Member          | eliminar miembro creado                                   |   si   |  Playwright  |  
+| Member          | Encontrar miembro creado                                  |   si   |  Playwright  |  
+| Member          | Buscar miembro creado                                     |   si   |  Playwright  |
 | Tags            | Encontrar de un tag creado                                |   si   |  Playwright  |  
 | Tags            | Actualizacion de un tag exitosa                           |   si   |  Playwright  |  
 | Tags            | Eliminacion de un tag exitoso                             |   si   |  Playwright  |  
@@ -77,8 +77,8 @@
 		- `..\ghost-cli\node_modules\.bin\ghost install 4.46.0 --local`
 	- en paso anterior, si no se ejecuta el comando cambiar el backslash por slash normal, es decir cambiar \ por /
 	- configuración de ghost. Confirmar url en pantalla. (el usuario y password que se configure se usarán más adelante) http://localhost:2368/ghost/#/setup 
-		- `ADMIN1: test@uniandes.edu.co`
-		- `PASSWORD1: Uniandes21`
+		- `ADMIN1: r.brache@uniandes.edu.co`
+		- `PASSWORD1: uniandes21`
 	- listar ghosts instalados 
 		- `..\ghost-cli\node_modules\.bin\ghost ls`
 	- detener ghost 
@@ -92,14 +92,13 @@
 	  - `..\ghost-cli\node_modules\.bin\ghost stop`
 	- configurar port de versión de ghost de referencia
 	- editar config.development.json para cambiar el puerto 
-	  - `url: http://localhost:2369/`
-	  - `server.port: 2369`
+	  - `url: https://pruebas-automatizadas.herokuapp.com/`
 	- iniciar ghost versión de referencia
 		- `cd ..\ghost-v3`
 	  - `..\ghost-cli\node_modules\.bin\ghost start`
-	- configuración de ghost. Confirmar url en pantalla. (registrar el mismo usuario y password de versión de prueba) http://localhost:2369/ghost/#/setup
-		- `ADMIN1: test@uniandes.edu.co`
-		- `PASSWORD1: Uniandes21`
+	- configuración de ghost. Confirmar url en pantalla. (registrar el mismo usuario y password de versión de prueba) https://pruebas-automatizadas.herokuapp.com/ghost/#/setup
+		- `ADMIN1: r.brache@uniandes.edu.co`
+		- `PASSWORD1: uniandes21`
 	- iniciar ghost versión de prueba
 	  - `cd ..\ghost`
 	  - `..\ghost-cli\node_modules\.bin\ghost start`
@@ -131,8 +130,8 @@
 	- PAGETITLE : titulo page de prueba
 	- PAGEDESC : Contenido de page de prueba
 	- PATHEXPORTSCREENSHOT: ../pruebasDeRegresion/report/ghostV    -> *Path de exportación. Se concatena con VERSIONGHOST*
-	- URL: http://localhost:2369/ | http://localhost:2368/   -> *la selección depende de la versión a probar. 2369 para Ghost V3.42.0, 2368 para Ghost 4.46.0*
-	- URLADMIN: http://localhost:2369/ghost | http://localhost:2368/ghost   -> *la selección depende de la versión a probar. 2369 para Ghost V3.42.0, 2368 para Ghost 4.46.0*
+	- URL: https://pruebas-automatizadas.herokuapp.com/ | http://localhost:2368/   -> *la selección depende de la versión a probar. En heroku para Ghost V3.42.0, puerto 2368 para Ghost 4.46.0*
+	- URLADMIN: https://pruebas-automatizadas.herokuapp.com/ghost | http://localhost:2368/ghost   -> *la selección depende de la versión a probar. En heroku para Ghost V3.42.0, 2368 para Ghost 4.46.0*
 	- VERSIONGHOST: 3 | 4  -> *3: versión de referencia Ghost V3.42.0, 4: versión de prueba Ghost 4.46.0*
 
 **ejecución de pruebas**
@@ -140,14 +139,14 @@
 	- Iniciar ghost de referencia y ghost de prueba 
 	- Tener instalado el navegador chrome o similar donde se realizará la prueba
 	- Al ejecutarse por primera vez kraken otorgar permisos de privacidad, aceptar terminos en ventana emergente (solo en sistema operativo windows)
-2. Configuración de usuario y password
+2. Configuración de usuario y password, se recomienda que para las dos versiones de ghost se usen este mismo usuario y contraseña
 	- Configurar properties.json
-	- `ADMIN1: test@uniandes.edu.co`
-	- `PASSWORD1: Uniandes21`
+	- `ADMIN1: r.brache@uniandes.edu.co`
+	- `PASSWORD1: uniandes21`
 3. **Ejecutar para ghost de referencia**
 	- Configurar properties.json
-		- `URL: http://localhost:2369/`
-		- `URLADMIN: http://localhost:2369/ghost`
+		- `URL: https://pruebas-automatizadas.herokuapp.com/`
+		- `URLADMIN: https://pruebas-automatizadas.herokuapp.com/ghost`
 		- `VERSIONGHOST: 3`
 4. Ejecutar en terminal externa o de vscode
 	`node .\node_modules\kraken-node\bin\kraken-node run`
@@ -195,24 +194,19 @@
 - `npm install playwright`
 - para correr: node [nombre archivio]
 
-1. index.js: es necesario actualizar userAdmin y adminPass
-	- userAdmin: usuario de ghost local 
-	- adminPass: password de ghost local 
-	- postTitle: titulo post de prueba 
-	- postDesc: descripción de post de prueba 
-	- minutesAddPublishPost: minutos a futuro para programar la publicación de un post 
-	- tag: tag de prueba
-	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas (node index.js). 
-2. index-page.js: es necesario actualizar userAdmin y adminPass
-	- userAdmin: usuario de ghost local 
-	- adminPass: password de ghost local 
-	- pageTitle: titulo page de prueba 
-	- pageDesc: descripción de page de prueba 
-	- minutesAddPublishPost: minutos a futuro para programar la publicación de un page 
-	- tag: tag de prueba 
-	- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o 	    un 4 (ghost versión 4) y correr las pruebas (node index-page.js). 
-
-
+1. Cambiar valores segun corresponda en index.js, index_members.js, index_tags y index-page.js con:
+	- configurar en archivo properties.json con datos de pruebas:
+		- es necesario actualizar userAdmin y adminPass
+		- userAdmin: usuario de ghost local 
+		- adminPass: password de ghost local 
+		- postTitle: titulo post de prueba  
+		- postDesc: descripción de post de prueba 
+		- minutesAddPublishPost: minutos a futuro para programar la publicación de un post 
+		- tag: tag de prueba	
+		- pageTitle: titulo page de prueba
+		- Dependiendo de que versión de ghost quiera realizar la prueba, solo debe cambiar las constante "ghostVersion" y poner un 3 (ghost versión 3) o un 4 (ghost versión 4).
+	
+2. Correr las pruebas para index.js, index_members.js, index_tags y index-page.js  (node index.js).
 
 #### Resemblejs
 **versiones**

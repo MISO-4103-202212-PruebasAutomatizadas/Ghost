@@ -21,7 +21,7 @@
 | Page            | Creación y publicación programada de Page exitosa         |   si   |  Playwright  |  
 | Page            | Eliminar Page                                             |   si   |  Playwright  |  
 | Page            | Despublicar un Page                                       |   si   |  Playwright  |  
-| Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |  
+| Page + Tags     | Asignar tag a Page                                        |   si   |  Playwright  |
 | Tags            | Creación de un tag exitoso                                |   si   |  Playwright  |  
 | 12              | Añadir miembro                                            |   si   |  Playwright  |  
 | 13              | modificar miembro                                         |   si   |  Playwright  |  

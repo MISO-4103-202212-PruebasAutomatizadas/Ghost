@@ -1,9 +1,9 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const properties = require('../../../properties.json');
 
-const TagsPage = require('../pages_objects/tags.page');
-const TagsNewPage = require('../pages_objects/tags_new.page');
-const TagsEditPage = require('../pages_objects/tags_edit.page');
+const TagsPage = (properties.VERSIONGHOST == 3) ? require('../pages_objects/tags.page.v3') : require('../pages_objects/tags.page');
+const TagsNewPage = (properties.VERSIONGHOST == 3) ? require('../pages_objects/tags_new.page.v3') : require('../pages_objects/tags_new.page');
+const TagsEditPage = (properties.VERSIONGHOST == 3) ? require('../pages_objects/tags_edit.page.v3') : require('../pages_objects/tags_edit.page');
 
 Given("I create a new tag with {kraken-string} name and {kraken-string} description", async function(tagName, tagDescrition) {
   TagsNewPage.driver = this.driver;

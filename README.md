@@ -85,6 +85,7 @@
 		- `..\ghost-cli\node_modules\.bin\ghost stop`
 	- instalar versión de referencia
 	  - `mkdir ghost-v3`
+	  - `cd ghost-v3`
 	  - `..\ghost-cli\node_modules\.bin\ghost install 3.42.0 --local`
 	- en paso anterior, si no se ejecuta el comando cambiar el backslash por slash normal, es decir cambiar \ por /
 	- detener ghost 

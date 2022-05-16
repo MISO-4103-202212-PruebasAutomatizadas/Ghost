@@ -4,13 +4,15 @@ Feature: Gestion de tags de ghost
   @user1 @web
   Scenario: Creación de un tag exitoso
     Given I login on Ghost page with "<ADMIN1>" and "<PASSWORD1>"
-    When I create a new tag with "test1" name and "test1" description
+    When I wait for 5 seconds
+    And I create a new tag with "test1" name and "test1" description
     Then I wait for 1 seconds
 
   @user2 @web
   Scenario: Encontrar de un tag creado
     Given I login on Ghost page with "<ADMIN1>" and "<PASSWORD1>"
-    When I create a new tag with "test2" name and "test2" description
+    When I wait for 5 seconds
+    And I create a new tag with "test2" name and "test2" description
     And I wait for 2 seconds
     And I find a tag with "test2" name
     Then I wait for 1 seconds
@@ -18,7 +20,8 @@ Feature: Gestion de tags de ghost
   @user3 @web
   Scenario: Actualizacion de un tag exitosa
     Given I login on Ghost page with "<ADMIN1>" and "<PASSWORD1>"
-    When I create a new tag with "test3" name and "test3" description
+    When I wait for 5 seconds
+    And I create a new tag with "test3" name and "test3" description
     And I wait for 2 seconds
     And I find a tag with "test3" name
     And I update a tag with "test3" slug and "update description" description
@@ -27,7 +30,8 @@ Feature: Gestion de tags de ghost
   @user4 @web
   Scenario: Eliminacion de un tag exitoso
     Given I login on Ghost page with "<ADMIN1>" and "<PASSWORD1>"
-    When I create a new tag with "test4" name and "test4" description
+    When I wait for 5 seconds
+    And I create a new tag with "test4" name and "test4" description
     And I wait for 2 seconds
     And I find a tag with "test4" name
     And I wait for 2 seconds

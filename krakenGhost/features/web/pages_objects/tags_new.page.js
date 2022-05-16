@@ -15,8 +15,8 @@ class TagsNewPage extends Page {
 
   get saveButton() { return this._driver.$('button[class="gh-btn gh-btn-primary gh-btn-icon ember-view"]') }  
 
-  async open() {
-    await super.open("http://localhost:2368/ghost/#/tags/new");
+  async open(urlAdmin) {
+    await super.open(urlAdmin + "#/tags/new");
   }
 }
 

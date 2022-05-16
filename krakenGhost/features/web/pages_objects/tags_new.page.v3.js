@@ -13,10 +13,10 @@ class TagsNewPage extends Page {
     return this._driver.$("textarea[id='tag-description']");
   }
 
-  get saveButton() { return this._driver.$('button[class="gh-btn gh-btn-primary gh-btn-icon ember-view"]') }  
-
-  async open() {
-    await super.open("http://localhost:2369/ghost/#/tags/new");
+  get saveButton() { return this._driver.$('button[class="gh-btn gh-btn-blue gh-btn-icon ember-view"]') }
+                                                         
+  async open(urlAdmin) {
+    await super.open(urlAdmin + "#/tags/new");
   }
 }
 

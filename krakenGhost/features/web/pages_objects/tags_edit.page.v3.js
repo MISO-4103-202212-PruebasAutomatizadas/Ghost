@@ -15,13 +15,13 @@ class TagsEditPage extends Page {
 
   get saveButton() {
     return this._driver.$(
-      'button[class="gh-btn gh-btn-primary gh-btn-icon ember-view"]'
+      'button[class="gh-btn gh-btn-blue gh-btn-icon ember-view"]'
     );
   }
 
   get deleteButton() {
     return this._driver.$(
-      'button[class="gh-btn gh-btn-red gh-btn-icon"]'
+      'button[class="gh-btn gh-btn-red gh-btn-icon mb15"]'
     );
   }
 
@@ -31,8 +31,8 @@ class TagsEditPage extends Page {
     );
   }
 
-  async open() {
-    await super.open("http://localhost:2369/ghost/#/tags/" + this.tagSlug);
+  async open(urlAdmin) {
+    await super.open(urlAdmin +"#/tags/" + this.tagSlug);
   }
 }
 

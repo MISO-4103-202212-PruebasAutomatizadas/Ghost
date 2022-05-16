@@ -7,7 +7,7 @@ const TagsEditPage = (properties.VERSIONGHOST == 3) ? require('../pages_objects/
 
 Given("I create a new tag with {kraken-string} name and {kraken-string} description", async function(tagName, tagDescrition) {
   TagsNewPage.driver = this.driver;
-  await TagsNewPage.open();
+  await TagsNewPage.open(properties.URLADMIN);
   await TagsNewPage.tagNameInput.setValue(tagName);
   await TagsNewPage.tagDescriptionTextarea.setValue(tagDescrition);  
   await TagsNewPage.saveButton.click();
@@ -17,28 +17,28 @@ Given("I create a new tag with {kraken-string} name and {kraken-string} descript
 When("I find a tag with {kraken-string} name", async function(tagName) {
   TagsPage.driver = this.driver;
   TagsPage.tagTest = tagName;
-  await TagsPage.open();
+  await TagsPage.open(properties.URL);
   await TagsPage.tagsList.waitForDisplayed({ timeout: 5000 });
   if(await TagsPage.tagListItem.isDisplayed()){    
     await this.driver.saveScreenshot(`${properties.PATHEXPORTSCREENSHOT}${properties.VERSIONGHOST}/kraken_esc_${this.userId}_find_tag.png`);
     await TagsPage.tagListItem.click();
   }
-})
+});
 
 When("I update a tag with {kraken-string} slug and {kraken-string} description", async function(tagSlug, tagDescription) {
   TagsEditPage.driver = this.driver;
   TagsEditPage.tagSlug = tagSlug;
-  await TagsEditPage.open();
+  await TagsEditPage.open(properties.URLADMIN);
   await TagsEditPage.tagDescriptionTextarea.setValue(tagDescription);
   await this.driver.saveScreenshot(`${properties.PATHEXPORTSCREENSHOT}${properties.VERSIONGHOST}/kraken_esc_${this.userId}_update_tag.png`);
   return await TagsEditPage.saveButton.click();  
-})
+});
 
 Then("I deleted a tag with {kraken-string} slug", async function(tagSlug) {
   TagsEditPage.driver = this.driver;
   TagsEditPage.tagSlug = tagSlug;
-  await TagsEditPage.open();
+  await TagsEditPage.open(properties.URLADMIN);
   await TagsEditPage.deleteButton.click();
   await this.driver.saveScreenshot(`${properties.PATHEXPORTSCREENSHOT}${properties.VERSIONGHOST}/kraken_esc_${this.userId}_delete_tag.png`);
   return await TagsEditPage.deleteConfirmButton.click();  
-})
+});

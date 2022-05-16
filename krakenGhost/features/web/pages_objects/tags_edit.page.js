@@ -31,8 +31,8 @@ class TagsEditPage extends Page {
     );
   }
 
-  async open() {
-    await super.open("http://localhost:2368/ghost/#/tags/" + this.tagSlug);
+  async open(urlAdmin) {
+    await super.open(urlAdmin + "#/tags/" + this.tagSlug);
   }
 }
 

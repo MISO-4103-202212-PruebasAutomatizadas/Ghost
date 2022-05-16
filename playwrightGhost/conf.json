@@ -1,7 +1,0 @@
-{
-    "url": "http://localhost:2368/",
-    "urlAdmin" : "http://localhost:2368/Ghost",
-    "pathReports": "./reports/",
-    "userAdmin": "test@uniandes.edu.co",
-    "adminPass": "Uniandes21"
-}

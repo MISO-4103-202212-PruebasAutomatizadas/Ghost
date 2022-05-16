@@ -1,10 +1,11 @@
 const playwright = require("playwright");
-const LoginPage = require("./pages_objects/login.page");
-const MemberPage = require("./pages_objects/members.page");
-const MemberNewPage = require("./pages_objects/members-new.page");
 
 // configuracion variables de entorno
-const config = require('./conf.json');
+const config = require('./properties.json');
+
+const LoginPage = require("./pages_objects/login.page");
+const MemberPage = (config.version == 3) ? require("./pages_objects/members.page.v3")  : require("./pages_objects/members.page");
+const MemberNewPage = (config.version == 3) ? require("./pages_objects/members-new.page.v3") : require("./pages_objects/members-new.page");
 
 (async () => {
     console.log

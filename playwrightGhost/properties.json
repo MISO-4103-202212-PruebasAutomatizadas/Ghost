@@ -1,0 +1,8 @@
+{
+    "url": "https://pruebas-automatizadas.herokuapp.com/",
+    "urlAdmin" : "https://pruebas-automatizadas.herokuapp.com/Ghost",
+    "pathReports": "./reports/",
+    "userAdmin": "test@uniandes.edu.co",
+    "adminPass": "Uniandes21",
+    "version": 3
+}

@@ -22,7 +22,7 @@ const MemberGhost = {
             await LoginPage.open(properties.URLADMIN);
             await LoginPage.emailInput.setValue(user);
             await LoginPage.passwInput.setValue(password);
-            await this.driver.saveScreenshot(`${properties.PATHEXPORTSCREENSHOT}${properties.VERSIONGHOST}/kraken_esc_${this.userId}_login.png`);
+            await this.driver.saveScreenshot(`${properties.PATHEXPORTSCREENSHOT}${properties.VERSIONGHOST}/kraken_esc_${this.userId}_login_member.png`);
             return await LoginPage.signInButton.click();
         });
     },

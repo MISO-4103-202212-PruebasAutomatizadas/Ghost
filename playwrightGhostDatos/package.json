@@ -1,0 +1,17 @@
+{
+  "name": "playwrightghostdatos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
+    "@playwright/test": "^1.22.2"
+  },
+  "dependencies": {
+    "mockaroo": "^0.1.7"
+  }
+}

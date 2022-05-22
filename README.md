@@ -313,7 +313,9 @@
 
 ### Escenarios
 
-| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado |
+**post.spec.ts**: Feature: Posts
+
+| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
 |-----|----------------------------|--------------|-----------------------|-----------------------|
 | 1   | Crear post con titulo y descripcion vacios | Positiva | A priori | |  
 | 2   | Crear post con titulo válido | Positiva | A priori | |  
@@ -370,6 +372,8 @@
 	- fakerSeed: semilla para datos aleatorios de faker
 - datapools/post.datapool.js
 	- configuración de valores para pool de datos a priori
+- ubicación de tests
+	- playwrightGhostDatos / tests / *.spec.ts
 
 **ejecución**
 - Ejecución de todas las pruebas *verificar ubicación en playwrightGhostDatos*

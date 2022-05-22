@@ -383,3 +383,9 @@
 - En caso de generarse *errores en page.goto o page.type*, algunos causales son:
 	- verificar que ghost haya iniciado y que se haya configurado correctamente la url
 	- verificar manualmente que la api de Mockaroo esté disponible y que no haya completado las 200 peticiones diarias de la versión free `https://my.api.mockaroo.com/postSchema.json?key=XXXXXX` *XXXXX se encuentra disponible en properties.js*
+
+**referencia**
+- Repositorio: https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost
+- Instrucciones: Readme - apartado 'Semana 7: Validación de datos'
+- Wiki: https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost/wiki/Semana-7:-Validaci%C3%B3n-de-datos
+- Issues (prefijo DATOS): https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost/issues

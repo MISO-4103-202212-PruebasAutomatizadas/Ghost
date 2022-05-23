@@ -12,6 +12,7 @@
     "@playwright/test": "^1.22.2"
   },
   "dependencies": {
+    "@types/node": "^17.0.35",
     "mockaroo": "^0.1.7"
   }
 }

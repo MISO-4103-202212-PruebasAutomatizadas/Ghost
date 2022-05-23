@@ -1,6 +1,6 @@
 # MISO - Pruebas automatizadas
 
-## Entrega semana 6
+## Entrega semana 7
 
 ### Integrantes
 
@@ -299,3 +299,172 @@
 - CONTRA
 	- Al tener integraciones nativas, genera mayor dificultad al tratar de integrarlo con otras herramientas
 	- No se logró identificar como usarlo a partir de imágenes ya existentes
+
+
+## Semana 7: Validación de datos
+
+### Estrategias de validación de datos
+
+| Estrategia        | Objetivo                              | Implementación                     |
+|-------------------|---------------------------------------|------------------------------------|
+| A priori          | Contar con datos predefinidos orientados al cumplimiento del oráculo en el que son usados | Archivo Json *datapools/post.datapool.js* con estructura *[element][valid\|invalid][values]*. Se realiza la carga a través de *import* y se usa en los escenarios definidos. Se usa la estrategia `dataPoolVar.element.status.forEach((item, index) => { test('test', async ({page}) => { ... }) })`, de tal forma que cada valor definido se ejecuta en el escenario de manera aislada |
+| Pseudo-aleatorio  | Generar un pool de datos aleatorios en tiempo de ejecución, basados en un esquema previamente establecido, el cual está orientado al oráculo para el que son usados | Consumo de API Mockaroo, el cual retorna un archivo JSON con datos del esquema establecido. El esquema está configurado con datos de tipo *sentences, datetime, time, linkedid skill, username, words, paragraphs, naughty string*. La integración con el proyecto se realiza a través del paquete de node *mockaroo* y se instancia en *test.beforeAll* generando el pool una única vez por ejecución, a través del cliente `new Mockaroo.Client({ apiKey: ... })` y generando/obteniendo los datos a través de `client.generate({count,schema}).then(function(records) { poolLocal = records })`, de tal manera que el pool pueda ser usado en todos los escenarios establecidos. Los valores correspondientes se leen de `properties.js` | 
+| Aleatorios        | Generar datos aleatorios en tiempo de ejecución al momento en que son requeridos | Uso de paquete `@faker-js/faker`. Se asigna la semilla en `beforeAll` a partir de la configuración de `properties.js`. Se instancia en cada escenario donde es requerido de la forma `faker.tipo.dato()`. Principalmente fueron usados en casos donde se requería una cantidad fija de caracteres. | 
+
+### Escenarios
+
+**post.spec.ts**: Feature: Posts
+
+| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
+|-----|----------------------------|--------------|-----------------------|-----------------------|
+| 1   | Crear post con titulo y descripcion vacios | Positiva | A priori | |  
+| 2   | Crear post con titulo válido | Positiva | A priori | |  
+| 3   | Crear post con titulo inválido | Negativa | Aleatorio | |  
+| 4   | Crear post titulo con caracteres especiales | Positiva | Pseudo aleatorio | |  
+| 5   | Crear post con url válida | Positiva | Pseudo aleatorio | Issue-27 |  
+| 6   | Crear post con url vacia | Negativa | A priori | Issue-28 |  
+| 7   | Crear post con url invalida por valor | Negativa | A priori | |  
+| 8   | Crear post con url invalida por longitud | Negativa | Aleatorio | Issue-29 |  
+| 9   | Programar publicación de post con fecha y hora valida | Positiva | Aleatorio | |  
+| 10  | Programar publicación de post con fecha y hora en el pasado | Negativa | Aleatorio | |  
+| 11  | Programar publicación de post con formato de fecha invalido | Negativa | Pseudo aleatorio | |  
+| 12  | Programar/desprogramar/publicar post con fecha y hora invalida | Negativa | Aleatorio | Issue-30 |  
+| 13  | Programar publicación de post con formato de hora invalido | Negativa | Aleatorio | |  
+| 14  | Crear post con tag aleatorio válido | Positiva | Pseudo aleatorio | |  
+| 15  | Crear post con tag aleatorio inválido | Negativa | Aleatorio | Issue-31 |  
+| 16  | Crear post con tag existente | Positiva | A priori | |  
+| 17  | Publicar post sin author | Negativa | A priori | |  
+| 18  | Publicar post con author aleatorio | Negativa | Pseudo aleatorio | |  
+| 19  | Crear post con metadata title vacio | Positiva | A priori | |  
+| 20  | Crear post con metadata title válido | Positiva | Pseudo aleatorio | |  
+| 21  | Crear post con metadata title válido mayor a 60 caracteres | Positiva | Aleatorio | |  
+| 22  | Crear post con metadata title válido mayor a 300 caracteres | Negativa | Aleatorio | |  
+| 23  | Crear post con metadata description vacio | Positiva | A priori | |  
+| 24  | Crear post con metadata description válido | Positiva | Pseudo aleatorio | |  
+| 25  | Crear post con metadata description válido mayor a 145 caracteres | Positiva | Aleatorio | |  
+| 26  | Crear post con metadata description válido mayor a 500 caracteres | Negativa | Aleatorio | |  
+| 27  | Crear post con metadata url canónica vacia | Positiva | A priori | |  
+| 28  | Crear post con metadata url canónica válida | Positiva | A priori | |  
+| 29  | Crear post con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
+| 30  | Crear post con excerpt aleatorio | Positiva | Aleatorio | |  
+
+**members.spec.ts**: Feature: Members
+
+| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
+|-----|----------------------------|--------------|-----------------------|-----------------------|
+| 1   | crear miembro con nombre, email, labels y note vacios | Positiva | A priori | |  
+| 2   | Crear member con titulo válido | Positiva | A priori | |  
+| 3   | Crear member con titulo inválido | Negativa | Aleatorio | |  
+| 4   | Crear member titulo con caracteres especiales | Positiva | Pseudo aleatorio | |  
+| 5   | Crear member con url válida | Positiva | Pseudo aleatorio | Issue-27 |  
+| 6   | Crear member con url vacia | Negativa | A priori | Issue-28 |  
+| 7   | Crear member con url invalida por valor | Negativa | A priori | |  
+| 8   | Crear member con url invalida por longitud | Negativa | Aleatorio | Issue-29 |  
+| 9   | Buscar de member con fecha y hora valida | Positiva | Aleatorio | |  
+| 10  | Buscar de member con fecha y hora en el pasado | Negativa | Aleatorio | |  
+| 11  | Desactivar  member | Negativa | Pseudo aleatorio | |  
+| 12  | Crear/activar/editar member con fecha y hora invalida | Negativa | Aleatorio | Issue-30 |  
+| 13  | Buscar de member con formato de hora invalido | Negativa | Aleatorio | |  
+| 14  | Crear member con tag aleatorio válido | Positiva | Pseudo aleatorio | |  
+| 15  | Crear member con notes aleatorio inválido | Negativa | Aleatorio | Issue-31 |  
+| 16  | Crear member con tag existente | Positiva | A priori | |  
+| 17  | Publicar member sin author | Negativa | A priori | |  
+| 18  | Publicar member con author aleatorio | Negativa | Pseudo aleatorio | |  
+| 19  | Crear member con metadata title vacio | Positiva | A priori | |  
+| 20  | Crear member con metadata title válido | Positiva | Pseudo aleatorio | |  
+| 21  | Crear member con metadata title válido mayor a 60 caracteres | Positiva | Aleatorio | |  
+| 22  | Crear member con metadata title válido mayor a 300 caracteres | Negativa | Aleatorio | |  
+| 23  | Crear member con metadata description vacio | Positiva | A priori | |  
+| 24  | Crear member con metadata description válido | Positiva | Pseudo aleatorio | |  
+| 25  | Crear member con metadata description válido mayor a 145 caracteres | Positiva | Aleatorio | |  
+| 26  | Crear member con metadata description válido mayor a 500 caracteres | Negativa | Aleatorio | |  
+| 27  | Crear member con metadata url canónica vacia | Positiva | A priori | |  
+| 28  | Crear member con metadata url canónica válida | Positiva | A priori | |  
+| 29  | Crear member con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
+| 30  | Crear member con excerpt aleatorio | Positiva | Aleatorio | |  
+
+**page.spec.ts**: Feature: Posts
+
+| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
+|-----|----------------------------|--------------|-----------------------|-----------------------|
+| 1   | Crear page con titulo y descripcion vacios | Positiva | A priori | |  
+| 2   | Crear page con titulo válido | Positiva | A priori | |  
+| 3   | Crear page con titulo inválido | Negativa | Aleatorio | |  
+| 4   | Crear page titulo con caracteres especiales | Positiva | Pseudo aleatorio | |  
+| 5   | Crear page con url válida | Positiva | Pseudo aleatorio |  |  
+| 6   | Crear page con url vacia | Negativa | A priori |  |  
+| 7   | Crear page con url invalida por valor | Negativa | A priori | |  
+| 8   | Crear page con url invalida por longitud | Negativa | Aleatorio |  |  
+| 9   | Programar publicación de page con fecha y hora valida | Positiva | Aleatorio | |  
+| 10  | Programar publicación de page con fecha y hora en el pasado | Negativa | Aleatorio | |  
+| 11  | Programar publicación de page con formato de fecha invalido | Negativa | Pseudo aleatorio | |  
+| 12  | Programar/desprogramar/publicar page con fecha y hora invalida | Negativa | Aleatorio |  |  
+| 13  | Programar publicación de page con formato de hora invalido | Negativa | Aleatorio | |  
+| 14  | Crear page con tag aleatorio válido | Positiva | Pseudo aleatorio | |  
+| 15  | Crear page con tag aleatorio inválido | Negativa | Aleatorio |  |  
+| 16  | Crear page con tag existente | Positiva | A priori | |  
+| 17  | Publicar page sin author | Negativa | A priori | |  
+| 18  | Publicar page con author aleatorio | Negativa | Pseudo aleatorio | |  
+| 19  | Crear page con metadata title vacio | Positiva | A priori | |  
+| 20  | Crear page con metadata title válido | Positiva | Pseudo aleatorio | |  
+| 21  | Crear page con metadata title válido mayor a 60 caracteres | Positiva | Aleatorio | |  
+| 22  | Crear page con metadata title válido mayor a 300 caracteres | Negativa | Aleatorio | |  
+| 23  | Crear page con metadata description vacio | Positiva | A priori | |  
+| 24  | Crear page con metadata description válido | Positiva | Pseudo aleatorio | |  
+| 25  | Crear page con metadata description válido mayor a 145 caracteres | Positiva | Aleatorio | |  
+| 26  | Crear page con metadata description válido mayor a 500 caracteres | Negativa | Aleatorio | |  
+| 27  | Crear page con metadata url canónica vacia | Positiva | A priori | |  
+| 28  | Crear page con metadata url canónica válida | Positiva | A priori | |  
+| 29  | Crear page con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
+| 30  | Crear page con excerpt aleatorio | Positiva | Aleatorio | |  
+
+### Implementación
+
+**versiones**
+- versión de node: V16.15.0
+- versión de npm: 6.14.16
+- versión de aplicación de prueba: Ghost 4.46.0
+
+**instalación**
+- `cd .\playwrightGhostDatos\`
+- `npm install`
+
+**configuraciones**
+- properties.js
+	- url: url de ghost como visitante
+	- urlAdmin: url de ghost como admin
+	- pathReports: ubicación de imágenes generadas por cada escenario
+	- userAdmin: usuario de ghost local
+	- adminPass: password de ghost local
+	- mockarooPostApiKey: ApiKey en Mockaroo para acceder al archivo json generado a partir del esquema
+	- mockarooPageApiKey: ApiKey en Mockaroo para acceder al archivo json generado a partir del esquema para pages
+	- mockarooPostCount: cantidad de registros que se esperan obtener
+	- mockarooPageCount: cantidad de registros que se esperan obtener para pages
+	- mockarooPostSchema: esquema del que se espera recibir datos
+	- mockarooPageSchema: esquema del que se espera recibir datos para pages
+	- fakerSeed: semilla para datos aleatorios de faker
+- datapools/post.datapool.js
+	- configuración de valores para pool de datos a priori
+- datapools/page.datapool.js
+	- configuración de valores para pool de datos a priori
+- ubicación de tests
+	- playwrightGhostDatos / tests / *.spec.ts
+
+**ejecución**
+- Ejecución de todas las pruebas *verificar ubicación en playwrightGhostDatos*
+	`npx playwright test`
+- Ejecución de un feature en particular
+	`npx playwright test file.spec.ts`
+- Ejecución de un escenario particular
+	`npx playwright test -g "Scenario: n"`
+
+**manejo de errores**
+- En caso de generarse *errores en page.goto o page.type*, algunos causales son:
+	- verificar que ghost haya iniciado y que se haya configurado correctamente la url
+	- verificar manualmente que la api de Mockaroo esté disponible y que no haya completado las 200 peticiones diarias de la versión free `https://my.api.mockaroo.com/postSchema.json?key=XXXXXX` *XXXXX se encuentra disponible en properties.js*
+
+**referencia**
+- Repositorio: https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost
+- Instrucciones: Readme - apartado 'Semana 7: Validación de datos'
+- Wiki: https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost/wiki/Semana-7:-Validaci%C3%B3n-de-datos
+- Issues (prefijo DATOS): https://github.com/MISO-4103-202212-PruebasAutomatizadas/Ghost/issues

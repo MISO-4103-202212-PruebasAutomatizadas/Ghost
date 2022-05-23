@@ -1,5 +1,5 @@
 module.exports = {
-  "postDataPool":
+  "pageDataPool":
   {
     "title": {
       "valid": [
@@ -19,8 +19,8 @@ module.exports = {
     },
     "canonicalUrl": {
       "valid": [
-        "/postx",
-        "/posty",
+        "/pagex",
+        "/pagey",
         "/123456"
       ]
     }

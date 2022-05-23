@@ -356,17 +356,17 @@
 | 2   | Crear member con titulo válido | Positiva | A priori | |  
 | 3   | Crear member con titulo inválido | Negativa | Aleatorio | |  
 | 4   | Crear member titulo con caracteres especiales | Positiva | Pseudo aleatorio | |  
-| 5   | Crear member con url válida | Positiva | Pseudo aleatorio | Issue-27 |  
-| 6   | Crear member con url vacia | Negativa | A priori | Issue-28 |  
+| 5   | Crear member con url válida | Positiva | Pseudo aleatorio | |  
+| 6   | Crear member con url vacia | Negativa | A priori | |  
 | 7   | Crear member con url invalida por valor | Negativa | A priori | |  
-| 8   | Crear member con url invalida por longitud | Negativa | Aleatorio | Issue-29 |  
+| 8   | Crear member con url invalida por longitud | Negativa | Aleatorio | |  
 | 9   | Buscar de member con fecha y hora valida | Positiva | Aleatorio | |  
 | 10  | Buscar de member con fecha y hora en el pasado | Negativa | Aleatorio | |  
 | 11  | Desactivar  member | Negativa | Pseudo aleatorio | |  
-| 12  | Crear/activar/editar member con fecha y hora invalida | Negativa | Aleatorio | Issue-30 |  
+| 12  | Crear/activar/editar member con fecha y hora invalida | Negativa | Aleatorio | |  
 | 13  | Buscar de member con formato de hora invalido | Negativa | Aleatorio | |  
 | 14  | Crear member con tag aleatorio válido | Positiva | Pseudo aleatorio | |  
-| 15  | Crear member con notes aleatorio inválido | Negativa | Aleatorio | Issue-31 |  
+| 15  | Crear member con notes aleatorio inválido | Negativa | Aleatorio | |  
 | 16  | Crear member con tag existente | Positiva | A priori | |  
 | 17  | Publicar member sin author | Negativa | A priori | |  
 | 18  | Publicar member con author aleatorio | Negativa | Pseudo aleatorio | |  

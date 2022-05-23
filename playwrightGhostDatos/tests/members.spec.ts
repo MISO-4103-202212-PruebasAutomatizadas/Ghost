@@ -240,7 +240,7 @@ test.describe('Feature 1: Validación de datos al crear y editar miembros', () =
     console.log(" \n   success: notsave member");
   });
 
-  test('Scenario: 9. Programar publicación de member con fecha y hora valida', async ({ page }) => {
+  test('Scenario: 9. Buscar de member con fecha y hora valida', async ({ page }) => {
     console.log(
       "  When I create a Member with <memberTitle>");
     await page.click(membersNewButtom);
@@ -266,7 +266,7 @@ test.describe('Feature 1: Validación de datos al crear y editar miembros', () =
     console.log(" \n   Member success");
   });
 
-  test(`Scenario: 10. Programar publicación de member con fecha y hora en el pasado: `, async ({ page }) => {
+  test(`Scenario: 10. Buscar de member con fecha y hora en el pasado: `, async ({ page }) => {
     console.log(
       "  When I create a Member with <memberTitle>");
     await page.click(membersNewButtom);
@@ -349,7 +349,7 @@ test.describe('Feature 1: Validación de datos al crear y editar miembros', () =
     console.log(" \n   success: notsave member");
   });
 
-  test(`Scenario: 13. Programar publicación de member con formato de hora invalido: `, async ({ page }) => {
+  test(`Scenario: 13. Buscar de member con formato de hora invalido: `, async ({ page }) => {
     console.log(
       "  When I create a Member with <memberTitle>");
     await page.click(membersNewButtom);
@@ -396,7 +396,7 @@ test.describe('Feature 1: Validación de datos al crear y editar miembros', () =
     console.log(" \n   Member success");
   });
 
-  test('Scenario: 15. Crear member con tag aleatorio inválido', async ({ page }) => {
+  test('Scenario: 15. Crear member con notes aleatorio inválido', async ({ page }) => {
     console.log(
       "  When I create a Member with <memberTitle>");
     await page.click(membersNewButtom);
@@ -466,8 +466,8 @@ test.describe('Feature 1: Validación de datos al crear y editar miembros', () =
     await page.click(membersButtom);
     await page.click(saveButtonUpdate);
     await page.screenshot({path: config.pathReports + './1.17-memberAuthorDrop.png'});
-    await expect(page.locator(publishErrorMessage)).toContainText(['Saving failed: At least one author is required']);
-    console.log(" \n   success: notsave member");
+    await expect(page.locator(publishErrorMessage)).toContainText(['Saving failed: A name required']);
+    console.log(" \n   success: not save member");
   });
 
   test('Scenario: 18. Publicar member con author aleatorio', async ({ page }) => {

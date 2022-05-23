@@ -383,6 +383,41 @@
 | 29  | Crear member con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
 | 30  | Crear member con excerpt aleatorio | Positiva | Aleatorio | |  
 
+**page.spec.ts**: Feature: Posts
+
+| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
+|-----|----------------------------|--------------|-----------------------|-----------------------|
+| 1   | Crear page con titulo y descripcion vacios | Positiva | A priori | |  
+| 2   | Crear page con titulo válido | Positiva | A priori | |  
+| 3   | Crear page con titulo inválido | Negativa | Aleatorio | |  
+| 4   | Crear page titulo con caracteres especiales | Positiva | Pseudo aleatorio | |  
+| 5   | Crear page con url válida | Positiva | Pseudo aleatorio |  |  
+| 6   | Crear page con url vacia | Negativa | A priori |  |  
+| 7   | Crear page con url invalida por valor | Negativa | A priori | |  
+| 8   | Crear page con url invalida por longitud | Negativa | Aleatorio |  |  
+| 9   | Programar publicación de page con fecha y hora valida | Positiva | Aleatorio | |  
+| 10  | Programar publicación de page con fecha y hora en el pasado | Negativa | Aleatorio | |  
+| 11  | Programar publicación de page con formato de fecha invalido | Negativa | Pseudo aleatorio | |  
+| 12  | Programar/desprogramar/publicar page con fecha y hora invalida | Negativa | Aleatorio |  |  
+| 13  | Programar publicación de page con formato de hora invalido | Negativa | Aleatorio | |  
+| 14  | Crear page con tag aleatorio válido | Positiva | Pseudo aleatorio | |  
+| 15  | Crear page con tag aleatorio inválido | Negativa | Aleatorio |  |  
+| 16  | Crear page con tag existente | Positiva | A priori | |  
+| 17  | Publicar page sin author | Negativa | A priori | |  
+| 18  | Publicar page con author aleatorio | Negativa | Pseudo aleatorio | |  
+| 19  | Crear page con metadata title vacio | Positiva | A priori | |  
+| 20  | Crear page con metadata title válido | Positiva | Pseudo aleatorio | |  
+| 21  | Crear page con metadata title válido mayor a 60 caracteres | Positiva | Aleatorio | |  
+| 22  | Crear page con metadata title válido mayor a 300 caracteres | Negativa | Aleatorio | |  
+| 23  | Crear page con metadata description vacio | Positiva | A priori | |  
+| 24  | Crear page con metadata description válido | Positiva | Pseudo aleatorio | |  
+| 25  | Crear page con metadata description válido mayor a 145 caracteres | Positiva | Aleatorio | |  
+| 26  | Crear page con metadata description válido mayor a 500 caracteres | Negativa | Aleatorio | |  
+| 27  | Crear page con metadata url canónica vacia | Positiva | A priori | |  
+| 28  | Crear page con metadata url canónica válida | Positiva | A priori | |  
+| 29  | Crear page con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
+| 30  | Crear page con excerpt aleatorio | Positiva | Aleatorio | |  
+
 ### Implementación
 
 **versiones**
@@ -402,10 +437,15 @@
 	- userAdmin: usuario de ghost local
 	- adminPass: password de ghost local
 	- mockarooPostApiKey: ApiKey en Mockaroo para acceder al archivo json generado a partir del esquema
+	- mockarooPageApiKey: ApiKey en Mockaroo para acceder al archivo json generado a partir del esquema para pages
 	- mockarooPostCount: cantidad de registros que se esperan obtener
+	- mockarooPageCount: cantidad de registros que se esperan obtener para pages
 	- mockarooPostSchema: esquema del que se espera recibir datos
+	- mockarooPageSchema: esquema del que se espera recibir datos para pages
 	- fakerSeed: semilla para datos aleatorios de faker
 - datapools/post.datapool.js
+	- configuración de valores para pool de datos a priori
+- datapools/page.datapool.js
 	- configuración de valores para pool de datos a priori
 - ubicación de tests
 	- playwrightGhostDatos / tests / *.spec.ts

@@ -346,7 +346,6 @@ test.describe(
       await new Promise(r => setTimeout(r, 1000));
     });
 
-
     test(`Scenario: 12. Creación fallida de un tag con metadata-canonical-url`, async ({ page, }) => {
       console.log("Given I login on Ghost page with <userAdmin> and <adminPass>".padEnd(100, "_"));
       await page.click(tagsMenu);

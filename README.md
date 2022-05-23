@@ -418,6 +418,41 @@
 | 29  | Crear page con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
 | 30  | Crear page con excerpt aleatorio | Positiva | Aleatorio | |  
 
+**tags.spec.ts**: Feature: Tags
+
+| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
+|-----|----------------------------|--------------|-----------------------|-----------------------|
+| 1   | Creación de un tag exitoso | Positiva | A priori | |  
+| 2   | Creación de un tag con nombre y descripcion vacio | Negativa | A priori | | 
+| 3   | Crear tag con nombre válido con 1 caracter | Positiva | A priori | | 
+| 4   | Crear tag con nombre válido con mas de 5 caracteres | Positiva | A priori | |  
+| 5   | Crear tag con nombre válido en el limite de caracteres | Positiva | A priori | | 
+| 6   | Crear tag con nombre no válido en el limite mas 1 caracter | Negativa | A priori | |
+| 7   | Crear tag con nombre no válido muy por encima del limite | Negativa | A priori | |  
+| 8   | Editar tag con nombre y descripcion vacio | Negativa | A priori | | 
+| 9   | Editar tag con nombre aleatorio no válido | Negativa | Aleatorio | |
+| 10   | Creación exitosa de un tag con metadata-title | Positiva | A priori | |  
+| 11   | Creación exitosa de un tag con metadata-description | Positiva | A priori | | 
+| 12   | Creación exitosa de un tag con metadata-url | Positiva | A priori | |
+| 13   | Creación exitosa de un tag con metadata-title con 1 caracter | Positiva | A priori | |  
+| 14   | Creación exitosa de un tag con metadata-title con mas de 5 caracteres | Positiva | A priori | | 
+| 15   | Creación exitosa de un tag con metadata-title en el limite de caracteres | Positiva | A priori | |
+| 16   | Creación fallida de un tag con metadata-title en el limite mas 1 caracter| Negativa | A priori | |  
+| 17   | Creación fallida de un tag con metadata-title muy por encima del limite | Negativa | A priori | | 
+| 18   | Creación exitosa de un tag con metadata-description con 1 caracter | Positiva | A priori | |
+| 19   | Creación exitosa de un tag con metadata-description con mas de 5 caracteres | Positiva | A priori | |  
+| 20   | Creación exitosa de un tag con metadata-description en el limite de caracteres | Positiva | A priori | | 
+| 21   | Creación fallida de un tag con metadata-description en el limite mas 1 caracter | Negativa | A priori | |
+| 22   | Creación fallida de un tag con metadata-description muy por encima del limite | Negativa | A priori | |  
+| 23   | Creación exitosa de un tag con metadata-canonical-url | Positiva | A priori | | 
+| 24   | Creación fallida de un tag con metadata-canonical-url | Negativa | A priori | |
+| 25   | Creación exitosa de un tag con twitter-title con 1 caracter | Positiva | A priori | |  
+| 26   | Creación exitosa de un tag con twitter-title con mas de 5 caracteres| Positiva | A priori | | 
+| 27   | Creación exitosa de un tag con twitter-title en el limite de caracteres| Positiva | A priori | |
+| 28   | Creación exitosa de un tag con twitter-description valido con 1 caracter | Positiva | A priori | |  
+| 29   | Creación exitosa de un tag con twitter-description valido con mas de 5 caracteres | Positiva | A priori | | 
+| 30   | Creación exitosa de un tag con twitter-description valido en el limite de caracteres | Positiva | A priori | |
+
 ### Implementación
 
 **versiones**

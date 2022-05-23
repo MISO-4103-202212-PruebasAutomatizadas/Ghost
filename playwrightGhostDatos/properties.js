@@ -9,7 +9,7 @@ module.exports = {
         "mockarooPostApiKey": "01fe3d10",
         "mockarooPostCount": 10,
         "mockarooPostSchema": 'postSchema',
-        "mockarooPageApiKey": "be7c5360",
+        "mockarooPageApiKey": "a5db1780",
         "mockarooPageCount": 10,
         "mockarooPageSchema": 'pageSchema',
         "fakerSeed": 202212

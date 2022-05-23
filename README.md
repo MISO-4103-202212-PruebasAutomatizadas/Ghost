@@ -348,6 +348,41 @@
 | 29  | Crear post con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
 | 30  | Crear post con excerpt aleatorio | Positiva | Aleatorio | |  
 
+**members.spec.ts**: Feature: Members
+
+| Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
+|-----|----------------------------|--------------|-----------------------|-----------------------|
+| 1   | crear miembro con nombre, email, labels y note vacios | Positiva | A priori | |  
+| 2   | Crear member con titulo válido | Positiva | A priori | |  
+| 3   | Crear member con titulo inválido | Negativa | Aleatorio | |  
+| 4   | Crear member titulo con caracteres especiales | Positiva | Pseudo aleatorio | |  
+| 5   | Crear member con url válida | Positiva | Pseudo aleatorio | Issue-27 |  
+| 6   | Crear member con url vacia | Negativa | A priori | Issue-28 |  
+| 7   | Crear member con url invalida por valor | Negativa | A priori | |  
+| 8   | Crear member con url invalida por longitud | Negativa | Aleatorio | Issue-29 |  
+| 9   | Buscar de member con fecha y hora valida | Positiva | Aleatorio | |  
+| 10  | Buscar de member con fecha y hora en el pasado | Negativa | Aleatorio | |  
+| 11  | Desactivar  member | Negativa | Pseudo aleatorio | |  
+| 12  | Crear/activar/editar member con fecha y hora invalida | Negativa | Aleatorio | Issue-30 |  
+| 13  | Buscar de member con formato de hora invalido | Negativa | Aleatorio | |  
+| 14  | Crear member con tag aleatorio válido | Positiva | Pseudo aleatorio | |  
+| 15  | Crear member con notes aleatorio inválido | Negativa | Aleatorio | Issue-31 |  
+| 16  | Crear member con tag existente | Positiva | A priori | |  
+| 17  | Publicar member sin author | Negativa | A priori | |  
+| 18  | Publicar member con author aleatorio | Negativa | Pseudo aleatorio | |  
+| 19  | Crear member con metadata title vacio | Positiva | A priori | |  
+| 20  | Crear member con metadata title válido | Positiva | Pseudo aleatorio | |  
+| 21  | Crear member con metadata title válido mayor a 60 caracteres | Positiva | Aleatorio | |  
+| 22  | Crear member con metadata title válido mayor a 300 caracteres | Negativa | Aleatorio | |  
+| 23  | Crear member con metadata description vacio | Positiva | A priori | |  
+| 24  | Crear member con metadata description válido | Positiva | Pseudo aleatorio | |  
+| 25  | Crear member con metadata description válido mayor a 145 caracteres | Positiva | Aleatorio | |  
+| 26  | Crear member con metadata description válido mayor a 500 caracteres | Negativa | Aleatorio | |  
+| 27  | Crear member con metadata url canónica vacia | Positiva | A priori | |  
+| 28  | Crear member con metadata url canónica válida | Positiva | A priori | |  
+| 29  | Crear member con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
+| 30  | Crear member con excerpt aleatorio | Positiva | Aleatorio | |  
+
 ### Implementación
 
 **versiones**

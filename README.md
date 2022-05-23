@@ -383,7 +383,7 @@
 | 29  | Crear member con metadata url canónica inválida | Negativa | Pseudo aleatorio | |  
 | 30  | Crear member con excerpt aleatorio | Positiva | Aleatorio | |  
 
-**page.spec.ts**: Feature: Posts
+**page.spec.ts**: Feature: Pages
 
 | Nro | Escenario                  | Tipo de test | Estrategia principal  | Hallazgo identificado | 
 |-----|----------------------------|--------------|-----------------------|-----------------------|
